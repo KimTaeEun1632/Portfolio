@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+CU&display=swap");
+
+.navBox {
+  width: 100%;
+  height: 4.5rem;
+  max-width: 71.25rem;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 100;
+  background-color: white;
+}
+
+.navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 200;
+}
+
+.logoText {
+  font-family: "Playwrite CU";
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.videoButton {
+  background-color: black;
+}
+.playButton {
+  width: 30px;
+  height: 30px;
+}
