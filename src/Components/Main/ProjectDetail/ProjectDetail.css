@@ -1,0 +1,21 @@
+.Detail-Wrap {
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 50px 30px 60px;
+}
+
+.Detail-content {
+  display: flex;
+  gap: 30px;
+}
+.Detail-Name {
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.Detail-img {
+  width: 185px;
+  height: 260px;
+}
