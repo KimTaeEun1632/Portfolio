@@ -1,23 +1,27 @@
 [
   {
     "id": 1,
-    "title": "오픈마인드",
+    "title": "OpenMind",
     "description": "This is a project about...",
-    "technologies": ["React", "Node.js", "MongoDB"],
+    "technologies": [
+      "React, Vite, pnpm, Prettier, EsLint airbnb, Style Components"
+    ],
     "imgUrl": "/images/common.jpg"
   },
   {
     "id": 2,
-    "title": "더줄게",
+    "title": "The Julge",
     "description": "This is a project about...",
-    "technologies": ["React", "Node.js", "MongoDB"],
+    "technologies": [
+      "Next, TypeScript, Style Components, SCSS, Jira, axios, react query, EsLint, Prettier"
+    ],
     "imgUrl": "/images/콰이어트 플레이스.jpg"
   },
   {
     "id": 3,
-    "title": "글로벌노마드",
+    "title": "GlobalNomad",
     "description": "This is a project about...",
-    "technologies": ["React", "Node.js", "MongoDB"],
+    "technologies": ["next, TypeScript, TailWind CSS, axios, react query"],
     "imgUrl": "/images/탈주.jpg"
   },
   {
@@ -29,7 +33,7 @@
   },
   {
     "id": 5,
-    "title": "포트폴리오",
+    "title": "Portfolio",
     "description": "This is a project about...",
     "technologies": ["React", "Node.js", "MongoDB"],
     "imgUrl": "/images/핸섬가이즈.jpg"
