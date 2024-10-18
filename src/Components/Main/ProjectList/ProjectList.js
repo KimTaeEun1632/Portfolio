@@ -1,4 +1,4 @@
-import ProjectListBox from "../ProjectDetail/ProjectListBox";
+import ProjectListBox from "../ProjectListBox/ProjectListBox";
 import "./ProjectList.css";
 
 function ProjectList({ items }) {
