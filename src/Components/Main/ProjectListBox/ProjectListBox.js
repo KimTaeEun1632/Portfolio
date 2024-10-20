@@ -7,7 +7,10 @@ const ProjectListData = ({ item }) => {
     <div className="image-wrapper">
       <img src={item.imgUrl} alt="이미지1" />
       <div className="project-detail-button">
-        <Link to="/projectDetail" className="detail-button-hover">
+        <Link
+          to={`/projectDetail/${item.id}#project-${item.id}`} // URL에 projectId 포함
+          className="detail-button-hover"
+        >
           상세보기
         </Link>
       </div>
@@ -18,7 +21,6 @@ const ProjectListData = ({ item }) => {
 };
 
 const ProjectListBox = ({ items }) => {
-  console.log(items);
   return (
     <ul className="ProjectListUl">
       {items.map((item) => {

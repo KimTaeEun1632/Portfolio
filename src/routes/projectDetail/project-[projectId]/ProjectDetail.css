@@ -1,0 +1,21 @@
+.projects-detail-page {
+  padding: 2rem;
+}
+
+.project-detail-section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.technologies {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}

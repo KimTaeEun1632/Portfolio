@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/root";
 import ErrorPage from "./error-page";
-import ProjectDetail from "./routes/ProjectDetail";
+import ProjectDetail from "./routes/projectDetail/project-[projectId]";
 import Main from "./Components/Main/Main";
 import items from "./mock.json";
 
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <Main items={items} />,
       },
       {
-        path: "projectDetail",
+        path: "projectDetail/:projectId", // :projectId를 사용하여 URL 파라미터로 설정
         element: <ProjectDetail />,
       },
     ],
