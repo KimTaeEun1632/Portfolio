@@ -2,40 +2,69 @@
   {
     "id": 1,
     "title": "OpenMind",
+    "subtitle": "오픈마인드",
+    "date": "00.00.00 ~ 00. 00. 00",
     "description": "This is a project about...",
     "technologies": [
       "React, Vite, pnpm, Prettier, EsLint airbnb, Style Components"
     ],
-    "imgUrl": "/images/common.jpg"
+    "imgUrl": "/images/common.jpg",
+    "links": {
+      "github": "https://github.com/suMin-97/openmind",
+      "website": "https://openmind-life.vercel.app/"
+    }
   },
   {
     "id": 2,
     "title": "The Julge",
+    "subtitle": "더 줄게",
+    "date": "00.00.00 ~ 00. 00. 00",
     "description": "This is a project about...",
     "technologies": [
       "Next, TypeScript, Style Components, SCSS, Jira, axios, react query, EsLint, Prettier"
     ],
-    "imgUrl": "/images/콰이어트 플레이스.jpg"
+    "imgUrl": "/images/콰이어트 플레이스.jpg",
+    "links": {
+      "github": "https://github.com/Team18-The-Julge/The-Julge",
+      "website": "https://the-julge-tau.vercel.app/"
+    }
   },
   {
     "id": 3,
     "title": "GlobalNomad",
+    "subtitle": "글로벌노마드",
+    "date": "00.00.00 ~ 00. 00. 00",
     "description": "This is a project about...",
     "technologies": ["next, TypeScript, TailWind CSS, axios, react query"],
-    "imgUrl": "/images/탈주.jpg"
+    "imgUrl": "/images/탈주.jpg",
+    "links": {
+      "github": "https://github.com/Globalnomad-17/team17-globalnomad",
+      "website": "https://team17-globalnomad.vercel.app/"
+    }
   },
   {
     "id": 4,
-    "title": "개인프로젝트",
+    "title": "personal project",
+    "subtitle": "개인 프로젝트",
+    "date": "00.00.00 ~ 00. 00. 00",
     "description": "This is a project about...",
     "technologies": ["React", "Node.js", "MongoDB"],
-    "imgUrl": "/images/하이재킹.jpg"
+    "imgUrl": "/images/하이재킹.jpg",
+    "links": {
+      "github": "https://github.com/Team18-The-Julge/The-Julge",
+      "website": "https://the-julge-tau.vercel.app/"
+    }
   },
   {
     "id": 5,
     "title": "Portfolio",
+    "subtitle": "포트폴리오",
+    "date": "00.00.00 ~ 00. 00. 00",
     "description": "This is a project about...",
     "technologies": ["React", "Node.js", "MongoDB"],
-    "imgUrl": "/images/핸섬가이즈.jpg"
+    "imgUrl": "/images/핸섬가이즈.jpg",
+    "links": {
+      "github": "https://github.com/KimTaeEun1632/Portfolio"
+    }
   }
 ]

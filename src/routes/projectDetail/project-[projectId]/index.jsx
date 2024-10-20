@@ -33,15 +33,52 @@ const ProjectDetail = () => {
           id={`project-${item.id}`}
           className="project-detail-section"
         >
-          <h2>{item.title}</h2>
-          <img src={item.imgUrl} alt={item.title} className="project-image" />
-          <p>{item.description}</p>
-          <h3>사용 기술</h3>
-          <ul className="technologies">
-            {item.technologies.map((tech, index) => (
-              <li key={index}>{tech}</li>
-            ))}
-          </ul>
+          <div className="project-summation-section">
+            <img src={item.imgUrl} alt={item.title} className="project-image" />
+            <div className="project-text-section">
+              <div>
+                <h2>{item.title}</h2>
+                <p>{item.subtitle}</p>
+              </div>
+              <div className="project-date">
+                <p>{item.date}</p>
+              </div>
+              <div>
+                <p>{item.description}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ul className="project-links">
+              <li>
+                <a
+                  href={item.links.github}
+                  className="project-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a
+                  href={item.links.website}
+                  className="project-link"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Demo
+                </a>
+              </li>
+            </ul>
+
+            <h3>사용 기술</h3>
+            <ul className="technologies">
+              {item.technologies.map((tech, index) => (
+                <li key={index}>{tech}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       ))}
     </div>
