@@ -18,6 +18,12 @@
   margin-bottom: 1rem;
 }
 
+.project-titleBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .technologies {
   list-style-type: disc;
   margin-left: 1.5rem;

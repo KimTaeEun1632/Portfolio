@@ -1,0 +1,28 @@
+.badge-container {
+  display: flex;
+  width: fit-content;
+  padding: 6px 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* Team Project: 파란색 배지 */
+.badge-team {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Personal Project: 빨간색 배지 */
+.badge-personal {
+  background-color: #ff4b4b;
+  color: white;
+}
+
+.badge-text {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}

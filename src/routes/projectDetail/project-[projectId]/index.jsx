@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom"; // useParams 추가
 import items from "../../../mock.json";
 import "./ProjectDetail.css";
+import Badge from "../../../Components/Badge/Badge";
 
 const ProjectDetail = () => {
   const { projectId } = useParams(); // URL의 projectId 파라미터 가져오기
@@ -44,7 +45,10 @@ const ProjectDetail = () => {
             <img src={item.imgUrl} alt={item.title} className="project-image" />
             <div className="project-text-section">
               <div>
-                <h2>{item.title}</h2>
+                <div className="project-titleBox">
+                  <h2>{item.title}</h2>
+                  <Badge item={item} />
+                </div>
                 <p>{item.subtitle}</p>
               </div>
               <div className="project-date">
