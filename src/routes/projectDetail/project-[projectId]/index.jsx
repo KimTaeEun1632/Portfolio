@@ -7,12 +7,19 @@ const ProjectDetail = () => {
   const { projectId } = useParams(); // URL의 projectId 파라미터 가져오기
   const location = useLocation();
 
-  // 페이지 렌더링 시 해당 앵커로 스크롤
   useEffect(() => {
     if (location.hash) {
       const element = document.querySelector(location.hash);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        const offset = 56;
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
       }
     }
   }, [location]);
