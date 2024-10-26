@@ -84,9 +84,9 @@ const ProjectDetail = () => {
             </ul>
 
             <h3>사용 기술</h3>
-            <ul className="technologies">
-              {item.technologies.map((tech, index) => (
-                <li key={index}>{tech}</li>
+            <ul className="reasonForTechChoice">
+              {item.reasonForTechChoice.map((techChoice, id) => (
+                <li key={id}>{techChoice}</li>
               ))}
             </ul>
           </div>
