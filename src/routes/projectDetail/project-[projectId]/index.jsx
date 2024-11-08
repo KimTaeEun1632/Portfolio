@@ -108,8 +108,14 @@ const ProjectDetail = () => {
       ))}
       {/* showScrollToTop이 true일 때만 버튼 표시 */}
       {showScrollToTop && (
-        <div className="fixBtn">
-          <a href="#topNav">위로이동버튼</a>
+        <div className="fixBtnWrap">
+          <a href="#topNav">
+            <img
+              className="fixBtn"
+              src="/images/위쪽화살표.png"
+              alt="위쪽 화살표"
+            ></img>
+          </a>
         </div>
       )}
     </div>
