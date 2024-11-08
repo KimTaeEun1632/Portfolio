@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom"; // useParams 추가
+import React, { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import items from "../../../mock.json";
 import "./ProjectDetail.css";
 import Badge from "../../../Components/Badge/Badge";
 
 const ProjectDetail = () => {
-  const { projectId } = useParams(); // URL의 projectId 파라미터 가져오기
+  const { projectId } = useParams();
   const location = useLocation();
+
+  // 스크롤 위치에 따라 버튼 표시 여부를 제어하기 위한 state
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
     if (location.hash) {
@@ -25,10 +28,21 @@ const ProjectDetail = () => {
     }
   }, [location]);
 
-  // projectId로 해당 프로젝트 데이터 찾기
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowScrollToTop(true);
+      } else {
+        setShowScrollToTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const project = items.find((item) => item.id === parseInt(projectId));
 
-  // 프로젝트가 없을 때 예외 처리
   if (!project) {
     return <div>프로젝트를 찾을 수 없습니다.</div>;
   }
@@ -92,6 +106,12 @@ const ProjectDetail = () => {
           </div>
         </div>
       ))}
+      {/* showScrollToTop이 true일 때만 버튼 표시 */}
+      {showScrollToTop && (
+        <div className="fixBtn">
+          <a href="#topNav">위로이동버튼</a>
+        </div>
+      )}
     </div>
   );
 };

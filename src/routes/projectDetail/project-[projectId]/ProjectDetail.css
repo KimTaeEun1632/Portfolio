@@ -1,5 +1,6 @@
 .projects-detail-page {
-  padding: 2rem;
+  width: 980px;
+  margin: 0 auto;
 }
 
 .project-detail-section {
@@ -67,4 +68,18 @@
   text-align: center;
   line-height: 39px;
   color: white;
+}
+
+.fixBtn {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  right: 0;
+  bottom: 80px;
+  min-height: 50px;
+  margin-left: 440px;
+  text-align: center;
+  z-index: 7;
+  right: 50%;
+  margin-right: -548px;
 }

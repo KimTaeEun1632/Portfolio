@@ -23,7 +23,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <div className="navBox">
+    <div className="navBox" id="topNav">
       {/* navBar1: 기본 네비게이션 바 */}
       <div className={`navBar ${showNavBar2 ? "hidden" : ""}`}>
         <div>
