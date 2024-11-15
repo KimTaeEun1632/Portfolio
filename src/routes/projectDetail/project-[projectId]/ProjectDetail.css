@@ -70,6 +70,20 @@
   color: white;
 }
 
+.reasonTC-Wrap {
+  margin-top: 35px;
+}
+
+.reasonTc-title {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.reasonForTechChoice {
+  margin-top: 25px;
+  line-height: 1.8;
+}
+
 .fixBtnWrap {
   display: flex;
   justify-content: flex-end;

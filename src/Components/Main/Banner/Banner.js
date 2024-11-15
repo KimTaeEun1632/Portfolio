@@ -34,12 +34,16 @@ const Banner = () => {
           {/* 버튼에 이벤트 핸들러 연결 */}
           <button className="videoButton" onClick={handlePlayPause}>
             {isPlaying ? (
-              "일시정지"
+              <img
+                src="./images/pause.png"
+                className="playButton"
+                alt="일시정지 아이콘"
+              ></img>
             ) : (
               <img
-                src="./images/play.svg"
+                src="./images/play-button.png"
                 className="playButton"
-                alt="플레이아이폰"
+                alt="플레이아이콘"
               ></img>
             )}
           </button>

@@ -4,8 +4,8 @@
     "title": "OpenMind",
     "subtitle": "오픈마인드",
     "projectType": "team",
-    "date": "00.00.00 ~ 00. 00. 00",
-    "description": "This is a project about...",
+    "date": "24. 2. 24 ~ 24. 3. 12",
+    "description": "솔직한 질문을 통해 상대와 더 가까워지세요. 자유롭게 질문과 답변을 통해 소통하는 플랫폼 입니다.",
     "technologies": [
       "React, Vite, pnpm, Prettier, EsLint airbnb, Style Components"
     ],
@@ -26,8 +26,8 @@
     "title": "The Julge",
     "subtitle": "더 줄게",
     "projectType": "team",
-    "date": "00.00.00 ~ 00. 00. 00",
-    "description": "This is a project about...",
+    "date": "24. 4. 15 ~ 24. 5. 1",
+    "description": "더 줄게는 고용인과 사용자간의 조건 입력을 통한 원하는 일자리를 검색하는 매칭 플랫폼 입니다.",
     "technologies": [
       "Next, TypeScript, Style Components, SCSS, Jira, axios, react query, EsLint, Prettier"
     ],
@@ -50,8 +50,8 @@
     "title": "GlobalNomad",
     "subtitle": "글로벌노마드",
     "projectType": "team",
-    "date": "00.00.00 ~ 00. 00. 00",
-    "description": "This is a project about...",
+    "date": "24. 5. 18 ~ 24. 6. 26",
+    "description": "사람들이 여행을 갈 때, 가서 뭘 할지, 비용은 얼마인지 등 여러 고민을 하게 됩니다. 바쁜 현대인의 이런 고민을 줄여주기 위해 플랫폼 안에 잘 짜인 체험 상품을 보고 간단하게 예약할 수 있는 서비스 입니다.",
     "technologies": ["next, TypeScript, TailWind CSS, axios, react query"],
     "imgUrl": "/images/탈주.jpg",
     "links": {
@@ -87,7 +87,7 @@
     "subtitle": "포트폴리오",
     "projectType": "personal",
     "date": "00.00.00 ~ 00. 00. 00",
-    "description": "This is a project about...",
+    "description": "개인 포트폴리오 사이트 제작, React 기본기 연습과 React router v6를 연습하기 위한 프로젝트 입니다.",
     "technologies": ["React"],
     "imgUrl": "/images/핸섬가이즈.jpg",
     "links": {

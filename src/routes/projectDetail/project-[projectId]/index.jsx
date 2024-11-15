@@ -96,13 +96,14 @@ const ProjectDetail = () => {
                 </a>
               </li>
             </ul>
-
-            <h3>사용 기술</h3>
-            <ul className="reasonForTechChoice">
-              {item.reasonForTechChoice.map((techChoice, id) => (
-                <li key={id}>{techChoice}</li>
-              ))}
-            </ul>
+            <div className="reasonTC-Wrap">
+              <h1 className="reasonTc-title">사용 기술</h1>
+              <ul className="reasonForTechChoice">
+                {item.reasonForTechChoice.map((techChoice, id) => (
+                  <li key={id}>{techChoice}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       ))}
