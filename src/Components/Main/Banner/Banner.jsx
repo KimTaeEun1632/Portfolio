@@ -28,18 +28,22 @@ const Banner = () => {
             loop
             muted
           ></video>
-          <h1 className="title">어쩌구 저쩌구</h1>
+          <h1 className="title">프론트엔드 개발자 김태은 입니다.</h1>
           <span className="subTitle">qpwoal1324@naver.com</span>
 
           {/* 버튼에 이벤트 핸들러 연결 */}
           <button className="videoButton" onClick={handlePlayPause}>
             {isPlaying ? (
-              "일시정지"
+              <img
+                src="./images/pause.png"
+                className="playButton"
+                alt="일시정지 아이콘"
+              ></img>
             ) : (
               <img
-                src="./images/play.svg"
+                src="./images/play-button.png"
                 className="playButton"
-                alt="플레이아이폰"
+                alt="플레이아이콘"
               ></img>
             )}
           </button>
