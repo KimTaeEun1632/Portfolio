@@ -17,7 +17,7 @@ const ProjectDetail = () => {
       if (element) {
         const offset = 56;
         const elementPosition =
-          element.getBoundingClientRect().top + window.pageYOffset;
+          element.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - offset;
 
         window.scrollTo({
@@ -97,13 +97,20 @@ const ProjectDetail = () => {
               </li>
             </ul>
             <div className="reasonTC-Wrap">
-              <h1 className="reasonTc-title">사용 기술</h1>
+              <h1 className="reasonTC-title">사용 기술</h1>
               <ul className="reasonForTechChoice">
-                {item.reasonForTechChoice.map((techChoice, id) => (
-                  <li key={id}>{techChoice}</li>
-                ))}
+                {item.reasonForTechChoice.map((techChoice, id) => {
+                  // 콜론(:) 앞과 뒤를 나누기 위해 split 사용
+                  const [boldText, normalText] = techChoice.split(":");
+                  return (
+                    <li key={id}>
+                      <strong>{boldText}:</strong> {normalText}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
+            <div>문제상황 challenge To-be</div>
           </div>
         </div>
       ))}

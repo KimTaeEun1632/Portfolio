@@ -70,11 +70,15 @@
   color: white;
 }
 
+.project-link:hover {
+  background-color: rgb(85, 82, 201);
+}
+
 .reasonTC-Wrap {
   margin-top: 35px;
 }
 
-.reasonTc-title {
+.reasonTC-title {
   font-size: 25px;
   font-weight: 700;
 }
