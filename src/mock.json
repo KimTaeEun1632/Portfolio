@@ -19,6 +19,24 @@
       "Vite :  Vite는 개발 서버를 이용할 때 빠른 속도를 자랑합니다. 기존 번들로 기반으로 개발을 진행할 때, 소스 코드를 업데이트 하게 되면 번들링 과정을 다시 거쳐야 했지만 Vite는 어떤 모듈이 수정되면 수정된 모듈과 관련된 부분만 교체하기 때문에 로딩이 빠릅니다.",
       "pnpm : pnpm의 경우에는 프로젝트별로 node_modules에 매번 패키지를 설치했던 것과는 달리 global 저장소에 패키지를 한 번만 저장함으로써 저장 공간을 절약할 수 있다는 아주 큰 장점을 가지고 있어 사용하게 되었습니다.",
       "Style Components : CSS-in-JS 방식으로 JavaScript와 CSS 사이의 상수와 함수를 쉽게 공유 할 수 있다. 예를 들어, React에서는 props를 활용한 조건부 스타일링이 가능합니다. 현재 사용중인 스타일만 DOM에 포함합니다. CSS-in-JS는 짧은 길이의 유니크한 클래스를 자동으로 생성하기 때문에 코드 경량화의 장점이 있습니다."
+    ],
+    "slides": [
+      {
+        "src": "/images/글로벌1.png",
+        "alt": "글로벌노마드 이미지1"
+      },
+      {
+        "src": "/images/글로벌2.png",
+        "alt": "글로벌노마드 이미지2"
+      },
+      {
+        "src": "/images/글로벌3.png",
+        "alt": "글로벌노마드 이미지3"
+      },
+      {
+        "src": "/images/글로벌4.png",
+        "alt": "글로벌노마드 이미지4"
+      }
     ]
   },
   {
@@ -43,6 +61,24 @@
       "Jira : 팀원들과의 원할한 의사소통, git과의 연동, 작업상황 등의 생명주기를 파악하기 위해 커뮤니케이션 툴 Jira를 채택 하게 되었습니다.",
       "axios : 프로미스 기반으로 비동기 작업을 처리하는 데 있어서 더 직관적이고 편리한 방법을 제공합니다.",
       "react query : 간편한 데이터 관리를 위해 사용, 특히 데이터 패칭과 캐싱을 반복적인 비동기 데이터 호출을 방지하고자 채택했습니다."
+    ],
+    "slides": [
+      {
+        "src": "/images/글로벌1.png",
+        "alt": "글로벌노마드 이미지1"
+      },
+      {
+        "src": "/images/글로벌2.png",
+        "alt": "글로벌노마드 이미지2"
+      },
+      {
+        "src": "/images/글로벌3.png",
+        "alt": "글로벌노마드 이미지3"
+      },
+      {
+        "src": "/images/글로벌4.png",
+        "alt": "글로벌노마드 이미지4"
+      }
     ]
   },
   {
@@ -64,6 +100,24 @@
       "axios : 프로미스 기반으로 비동기 작업을 처리하는 데 있어서 더 직관적이고 편리한 방법을 제공합니다.",
       "react query : 간편한 데이터 관리를 위해 사용, 특히 데이터 패칭과 캐싱을 반복적인 비동기 데이터 호출을 방지하고자 채택했습니다.",
       "TailWind CSS : 빠르고 효율적인 스타일링을 위해 유틸리티 클래스 기반의 접근 방식인 TailWind CSS를 채택했습니다."
+    ],
+    "slides": [
+      {
+        "src": "/images/글로벌1.png",
+        "alt": "글로벌노마드 이미지1"
+      },
+      {
+        "src": "/images/글로벌2.png",
+        "alt": "글로벌노마드 이미지2"
+      },
+      {
+        "src": "/images/글로벌3.png",
+        "alt": "글로벌노마드 이미지3"
+      },
+      {
+        "src": "/images/글로벌4.png",
+        "alt": "글로벌노마드 이미지4"
+      }
     ]
   },
   {
@@ -79,7 +133,25 @@
       "github": "https://github.com/Team18-The-Julge/The-Julge",
       "website": "https://the-julge-tau.vercel.app/"
     },
-    "reasonForTechChoice": ["React", "Node.js", "MongoDB"]
+    "reasonForTechChoice": ["React", "Node.js", "MongoDB"],
+    "slides": [
+      {
+        "src": "/images/글로벌1.png",
+        "alt": "글로벌노마드 이미지1"
+      },
+      {
+        "src": "/images/글로벌2.png",
+        "alt": "글로벌노마드 이미지2"
+      },
+      {
+        "src": "/images/글로벌3.png",
+        "alt": "글로벌노마드 이미지3"
+      },
+      {
+        "src": "/images/글로벌4.png",
+        "alt": "글로벌노마드 이미지4"
+      }
+    ]
   },
   {
     "id": 5,
@@ -96,6 +168,24 @@
     "reasonForTechChoice": [
       "React : 리액트의 기본기를 더 연습하고자 채택했습니다.",
       "React router v6: 기존 배원던 v5대신 v6를 연습하고자 채택하였습니다."
+    ],
+    "slides": [
+      {
+        "src": "/images/글로벌1.png",
+        "alt": "글로벌노마드 이미지1"
+      },
+      {
+        "src": "/images/글로벌2.png",
+        "alt": "글로벌노마드 이미지2"
+      },
+      {
+        "src": "/images/글로벌3.png",
+        "alt": "글로벌노마드 이미지3"
+      },
+      {
+        "src": "/images/글로벌4.png",
+        "alt": "글로벌노마드 이미지4"
+      }
     ]
   }
 ]

@@ -1,32 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import items from "../../../mock.json";
 import "./ProjectDetail.css";
 import Badge from "../../../Components/Badge/Badge";
+import Carousel from "../../../Components/Carousel/Carousel";
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
-  const location = useLocation();
 
   // 스크롤 위치에 따라 버튼 표시 여부를 제어하기 위한 state
   const [showScrollToTop, setShowScrollToTop] = useState(false);
-
-  useEffect(() => {
-    if (location.hash) {
-      const element = document.querySelector(location.hash);
-      if (element) {
-        const offset = 56;
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,71 +32,75 @@ const ProjectDetail = () => {
 
   return (
     <div className="projects-detail-page">
-      {items.map((item) => (
-        <div
-          key={item.id}
-          id={`project-${item.id}`}
-          className="project-detail-section"
-        >
-          <div className="project-summation-section">
-            <img src={item.imgUrl} alt={item.title} className="project-image" />
-            <div className="project-text-section">
-              <div>
-                <div className="project-titleBox">
-                  <h2>{item.title}</h2>
-                  <Badge item={item} />
-                </div>
-                <p>{item.subtitle}</p>
+      <div
+        key={project.id}
+        id={`project-${project.id}`}
+        className="project-detail-section"
+      >
+        <div className="project-summation-section">
+          <img
+            src={project.imgUrl}
+            alt={project.title}
+            className="project-image"
+          />
+          <div className="project-text-section">
+            <div>
+              <div className="project-titleBox">
+                <h2>{project.title}</h2>
+                <Badge item={project} />
               </div>
-              <div className="project-date">
-                <p>{item.date}</p>
-              </div>
-              <div>
-                <p>{item.description}</p>
-              </div>
+              <p>{project.subtitle}</p>
             </div>
-          </div>
-          <div>
-            <ul className="project-links">
-              <li>
-                <a
-                  href={item.links.github}
-                  className="project-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href={item.links.website}
-                  className="project-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Demo
-                </a>
-              </li>
-            </ul>
-            <div className="reasonTC-Wrap">
-              <h1 className="reasonTC-title">사용 기술</h1>
-              <ul className="reasonForTechChoice">
-                {item.reasonForTechChoice.map((techChoice, id) => {
-                  // 콜론(:) 앞과 뒤를 나누기 위해 split 사용
-                  const [boldText, normalText] = techChoice.split(":");
-                  return (
-                    <li key={id}>
-                      <strong>{boldText}:</strong> {normalText}
-                    </li>
-                  );
-                })}
-              </ul>
+            <div className="project-date">
+              <p>{project.date}</p>
             </div>
-            <div>문제상황 challenge To-be</div>
+            <div>
+              <p>{project.description}</p>
+            </div>
           </div>
         </div>
-      ))}
+        <div>
+          <ul className="project-links">
+            <li>
+              <a
+                href={project.links.github}
+                className="project-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href={project.links.website}
+                className="project-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Demo
+              </a>
+            </li>
+          </ul>
+          <div className="reasonTC-Wrap">
+            <h1 className="reasonTC-title">사용 기술</h1>
+            <ul className="reasonForTechChoice">
+              {project.reasonForTechChoice.map((techChoice, id) => {
+                // 콜론(:) 앞과 뒤를 나누기 위해 split 사용
+                const [boldText, normalText] = techChoice.split(":");
+                return (
+                  <li key={id}>
+                    <strong>{boldText}:</strong> {normalText}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="sliderWrapper">
+            <Carousel item={project} />
+          </div>
+        </div>
+      </div>
       {/* showScrollToTop이 true일 때만 버튼 표시 */}
       {showScrollToTop && (
         <div className="fixBtnWrap">
