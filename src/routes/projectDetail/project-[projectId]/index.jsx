@@ -38,11 +38,13 @@ const ProjectDetail = () => {
         className="project-detail-section"
       >
         <div className="project-summation-section">
-          <img
-            src={project.imgUrl}
-            alt={project.title}
-            className="project-image"
-          />
+          <div className="project-image-wrapper">
+            <img
+              src={project.imgUrl}
+              alt={project.title}
+              className="project-image"
+            />
+          </div>
           <div className="project-text-section">
             <div>
               <div className="project-titleBox">
@@ -81,6 +83,16 @@ const ProjectDetail = () => {
                 Demo
               </a>
             </li>
+            <li>
+              <a
+                href={project.links.notion}
+                className="project-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Notion
+              </a>
+            </li>
           </ul>
           <div className="reasonTC-Wrap">
             <h1 className="reasonTC-title">사용 기술</h1>
@@ -97,7 +109,11 @@ const ProjectDetail = () => {
             </ul>
           </div>
           <div className="sliderWrapper">
+            <h1 className="Carousel-title">이미지</h1>
             <Carousel item={project} />
+          </div>
+          <div>
+            <h1 className="Carousel-title">회고</h1>
           </div>
         </div>
       </div>

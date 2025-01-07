@@ -9,10 +9,11 @@
     "technologies": [
       "React, Vite, pnpm, Prettier, EsLint airbnb, Style Components"
     ],
-    "imgUrl": "/images/common.jpg",
+    "imgUrl": "/images/오픈마인드1.png",
     "links": {
       "github": "https://github.com/suMin-97/openmind",
-      "website": "https://openmind-life.vercel.app/"
+      "website": "https://openmind-life.vercel.app/",
+      "notion": "https://www.notion.so/OpenMind-148429a3f77280fabb71f7823fe544f0"
     },
     "reasonForTechChoice": [
       "React : 리액트는 컴포넌트 기반 아키텍처를 사용하여 재사용 가능한 UI를 구성합니다. 이는 개발 과정을 단순화하고, 유지 보수를 용이하게 합니다. 가상 DOM을 사용하여 애플리케이션의 성능을 향상 뿐만 아니라 강력한 생태계와 활발한 커뮤니티를 보유하고 있습니다.",
@@ -22,19 +23,19 @@
     ],
     "slides": [
       {
-        "src": "/images/글로벌1.png",
+        "src": "/images/오픈마인드1.png",
         "alt": "글로벌노마드 이미지1"
       },
       {
-        "src": "/images/글로벌2.png",
+        "src": "/images/오픈마인드2.png",
         "alt": "글로벌노마드 이미지2"
       },
       {
-        "src": "/images/글로벌3.png",
+        "src": "/images/오픈마인드3.png",
         "alt": "글로벌노마드 이미지3"
       },
       {
-        "src": "/images/글로벌4.png",
+        "src": "/images/오픈마인드4.png",
         "alt": "글로벌노마드 이미지4"
       }
     ]
@@ -49,10 +50,11 @@
     "technologies": [
       "Next, TypeScript, Style Components, SCSS, Jira, axios, react query, EsLint, Prettier"
     ],
-    "imgUrl": "/images/콰이어트 플레이스.jpg",
+    "imgUrl": "/images/더줄게1.png",
     "links": {
       "github": "https://github.com/Team18-The-Julge/The-Julge",
-      "website": "https://the-julge-tau.vercel.app/"
+      "website": "https://the-julge-tau.vercel.app/",
+      "notion": "https://www.notion.so/The-Julge-162429a3f7728084ba26ff8d4cf14762"
     },
     "reasonForTechChoice": [
       "Next.js : Next.js는 서버사이드 렌더링(SSR)과 정적 사이트 생성(SSG)을 모두 지원하여 SEO와 초기 로딩 속도가 뛰어난 웹 애플리케이션을 만들 수 있습니다. 또한 파일 기반 routing과 이미지 최적화를 위해 선택했습니다.",
@@ -64,19 +66,43 @@
     ],
     "slides": [
       {
-        "src": "/images/글로벌1.png",
+        "src": "/images/더줄게1.png",
         "alt": "글로벌노마드 이미지1"
       },
       {
-        "src": "/images/글로벌2.png",
+        "src": "/images/더줄게2.png",
         "alt": "글로벌노마드 이미지2"
       },
       {
-        "src": "/images/글로벌3.png",
+        "src": "/images/더줄게3.png",
         "alt": "글로벌노마드 이미지3"
       },
       {
-        "src": "/images/글로벌4.png",
+        "src": "/images/더줄게4.png",
+        "alt": "글로벌노마드 이미지4"
+      },
+      {
+        "src": "/images/더줄게5.png",
+        "alt": "글로벌노마드 이미지4"
+      },
+      {
+        "src": "/images/더줄게6.png",
+        "alt": "글로벌노마드 이미지4"
+      },
+      {
+        "src": "/images/더줄게7.png",
+        "alt": "글로벌노마드 이미지4"
+      },
+      {
+        "src": "/images/더줄게8.png",
+        "alt": "글로벌노마드 이미지4"
+      },
+      {
+        "src": "/images/더줄게9.png",
+        "alt": "글로벌노마드 이미지4"
+      },
+      {
+        "src": "/images/더줄게10.png",
         "alt": "글로벌노마드 이미지4"
       }
     ]
@@ -89,10 +115,11 @@
     "date": "24. 5. 18 ~ 24. 6. 26",
     "description": "사람들이 여행을 갈 때, 가서 뭘 할지, 비용은 얼마인지 등 여러 고민을 하게 됩니다. 바쁜 현대인의 이런 고민을 줄여주기 위해 플랫폼 안에 잘 짜인 체험 상품을 보고 간단하게 예약할 수 있는 서비스 입니다.",
     "technologies": ["next, TypeScript, TailWind CSS, axios, react query"],
-    "imgUrl": "/images/탈주.jpg",
+    "imgUrl": "/images/글로벌노마드.png",
     "links": {
       "github": "https://github.com/Globalnomad-17/team17-globalnomad",
-      "website": "https://team17-globalnomad.vercel.app/"
+      "website": "https://team17-globalnomad.vercel.app/",
+      "notion": "https://www.notion.so/GlobalNomad-169429a3f772807a9e93d784fa59d3cd"
     },
     "reasonForTechChoice": [
       "Next.js : Next.js는 서버사이드 렌더링(SSR)과 정적 사이트 생성(SSG)을 모두 지원하여 SEO와 초기 로딩 속도가 뛰어난 웹 애플리케이션을 만들 수 있습니다. 또한 파일 기반 routing과 이미지 최적화를 위해 선택했습니다.",
@@ -163,7 +190,8 @@
     "technologies": ["React"],
     "imgUrl": "/images/핸섬가이즈.jpg",
     "links": {
-      "github": "https://github.com/KimTaeEun1632/Portfolio"
+      "github": "https://github.com/KimTaeEun1632/Portfolio",
+      "notion": "https://www.notion.so/Portfolio-16b429a3f7728049ae3ccee6701201f2"
     },
     "reasonForTechChoice": [
       "React : 리액트의 기본기를 더 연습하고자 채택했습니다.",
