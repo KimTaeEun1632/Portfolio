@@ -1,8 +1,8 @@
 import React from "react";
-import Nav from "../Components/Nav/Nav";
+import Nav from "./Nav/Nav";
 import { Outlet } from "react-router-dom";
 
-const Root = () => {
+const Layout = () => {
   return (
     <>
       <Nav />
@@ -11,4 +11,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default Layout;
