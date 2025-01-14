@@ -2,16 +2,17 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import Root from "./routes/root";
 import ErrorPage from "./error-page";
 import ProjectDetail from "./routes/projectDetail/project-[projectId]";
 import Main from "./Components/Main/Main";
 import items from "./mock.json";
+import Login from "./routes/login";
+import Layout from "./Components/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         element: <ProjectDetail />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
