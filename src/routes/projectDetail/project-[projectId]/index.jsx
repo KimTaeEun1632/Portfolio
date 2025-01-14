@@ -114,6 +114,11 @@ const ProjectDetail = () => {
           </div>
           <div>
             <h1 className="Carousel-title">회고</h1>
+            <div className="retrospect-Wrapper">
+              {project.retrospect.map((review, index) => (
+                <p key={index}>{review}</p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
