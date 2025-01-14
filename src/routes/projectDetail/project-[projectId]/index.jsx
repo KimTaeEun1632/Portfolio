@@ -12,6 +12,10 @@ const ProjectDetail = () => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0); // 스크롤을 맨 위로 이동
+  }, [projectId]);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
         setShowScrollToTop(true);
