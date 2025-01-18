@@ -8,6 +8,7 @@ import Main from "./Components/Main/Main";
 import items from "./mock.json";
 import Login from "./routes/login";
 import Layout from "./Components/Layout";
+import Board from "./routes/board/board";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "projectDetail/:projectId", // :projectId를 사용하여 URL 파라미터로 설정
         element: <ProjectDetail />,
+      },
+      {
+        path: "/board",
+        element: <Board />,
       },
     ],
   },
