@@ -1,34 +1,45 @@
 import { useState } from "react";
 import "./BoardModal.css";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const BoardModal = ({ setIsOpenModal }) => {
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleStarClick = (index) => {
     setRating(index + 1);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Rating:", rating);
-    console.log("Content:", content);
-  };
+    if (!content || content.length > 200 || !rating || !nickname || !password)
+      return;
 
-  const onChange = (event) => {
-    setContent(event.target.value);
+    // 데이터 제출 로직 추가
+    try {
+      await addDoc(collection(db, "contents"), {
+        content,
+        rating,
+        nickname,
+        password,
+        createdAt: Date.now(),
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsOpenModal(false);
+    }
   };
-
-  const stars = [1, 2, 3, 4, 5];
 
   return (
     <div className="modal-wrapper">
       <div className="modal-title-wrapper">
         <h2 className="modal-title">글 작성</h2>
         <button
-          onClick={() => {
-            setIsOpenModal(false);
-          }}
+          onClick={() => setIsOpenModal(false)}
           className="modal-close-button"
         >
           <img src="/images/x_button.svg" alt="CloseButton" />
@@ -46,25 +57,34 @@ const BoardModal = ({ setIsOpenModal }) => {
           </div>
           <div className="modal-input-wrapper">
             <div className="modal-star">
-              {stars.map((_, index) => (
-                <div key={index} onClick={() => handleStarClick(index)}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <div key={star} onClick={() => handleStarClick(star - 1)}>
                   <img
                     src={
-                      index < rating
+                      star <= rating
                         ? "/images/starOnIcon.svg"
                         : "/images/starOffIcon.svg"
                     }
-                    alt="star"
+                    alt={`별점 ${star}`}
                   />
                 </div>
               ))}
             </div>
             <div className="modal-input">
-              <input type="text" name="name" placeholder="Nickname" required />
+              <input
+                type="text"
+                name="nickname"
+                placeholder="Nickname"
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
+                required
+              />
               <input
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
@@ -73,7 +93,7 @@ const BoardModal = ({ setIsOpenModal }) => {
         <div className="modal-textarea-wrapper">
           <textarea
             className="modal-textarea"
-            onChange={onChange}
+            onChange={(e) => setContent(e.target.value)}
             maxLength={200}
             value={content}
             placeholder="자유롭게 작성해주세요."
