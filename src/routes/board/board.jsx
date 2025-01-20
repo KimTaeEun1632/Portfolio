@@ -1,32 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import BoardModal from "../../Components/Modal/BoardModal";
 import "./board.css";
 
 const Board = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const modalBackground = useRef();
   return (
-    <div className="board-wrapper">
-      <div>
-        <h1>자유게시판</h1>
-        <button
-          onClick={() => {
-            setIsOpenModal(true);
-          }}
-        >
-          글쓰기
-        </button>
+    <div className="board-page">
+      <div className="board-wrapper">
+        <div className="board-title-wrapper">
+          <h1 className="board-title">자유게시판</h1>
+          <button
+            className="board-write-button"
+            onClick={() => {
+              setIsOpenModal(true);
+            }}
+          >
+            글쓰기
+          </button>
+        </div>
+        <div>게시판 입니다.</div>
       </div>
       {isOpenModal && (
-        <div
-          className="modal-background"
-          ref={modalBackground}
-          onClick={(e) => {
-            if (e.target === modalBackground.current) {
-              setIsOpenModal(false);
-            }
-          }}
-        >
+        <div className="modal-background">
           <BoardModal setIsOpenModal={setIsOpenModal} />
         </div>
       )}
