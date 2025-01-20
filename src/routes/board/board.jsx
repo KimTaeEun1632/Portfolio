@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BoardModal from "../../Components/Modal/BoardModal";
 import "./board.css";
+import BoardList from "../../Components/Board/BoardList";
 
 const Board = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -18,7 +19,9 @@ const Board = () => {
             글쓰기
           </button>
         </div>
-        <div>게시판 입니다.</div>
+        <div>
+          <BoardList />
+        </div>
       </div>
       {isOpenModal && (
         <div className="modal-background">

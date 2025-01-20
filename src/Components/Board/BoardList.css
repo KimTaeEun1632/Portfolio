@@ -1,0 +1,10 @@
+.BoardList-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0px 4px 16px 0px rgba(17, 34, 17, 0.05);
+  padding: 0 20px;
+  margin-top: 20px;
+}
