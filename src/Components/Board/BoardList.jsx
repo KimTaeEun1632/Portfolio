@@ -1,7 +1,7 @@
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
-import BoardContent from "./BordContent";
+
 import "./BoardList.css";
 
 const BoardList = () => {
@@ -13,13 +13,15 @@ const BoardList = () => {
     );
     const spanshot = await getDocs(contentsQuery);
     const contents = spanshot.docs.map((doc) => {
-      const { content, createdAt, nickname, password, rating } = doc.data();
+      const { content, createdAt, nickname, password, rating, title } =
+        doc.data();
       return {
         content,
         createdAt,
         nickname,
         password,
         rating,
+        title,
         id: doc.id,
       };
     });
@@ -32,7 +34,9 @@ const BoardList = () => {
   return (
     <div className="BoardList-wrapper">
       {contents.map((content) => (
-        <BoardContent key={content.id} {...content} />
+        <a key={content.id} href={`/board/${content.id}`}>
+          {content.title}
+        </a>
       ))}
     </div>
   );

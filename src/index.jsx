@@ -9,6 +9,7 @@ import items from "./mock.json";
 import Login from "./routes/login";
 import Layout from "./Components/Layout";
 import Board from "./routes/board/board";
+import BoardContent from "./routes/board/[id]";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,12 @@ const router = createBrowserRouter([
         element: <ProjectDetail />,
       },
       {
-        path: "/board",
+        path: "board",
         element: <Board />,
+      },
+      {
+        path: "board/:id",
+        element: <BoardContent />,
       },
     ],
   },
