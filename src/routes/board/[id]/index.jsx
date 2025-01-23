@@ -4,7 +4,7 @@ import { db } from "../../../firebase";
 import { useParams } from "react-router-dom";
 
 const BoardContent = () => {
-  const [contents, setContents] = useState(null);
+  const [content, setContent] = useState(null);
   const { id } = useParams();
   const boardId = id;
   const docRef = useMemo(() => doc(db, "contents", boardId), [boardId]);
@@ -15,7 +15,7 @@ const BoardContent = () => {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log("문서 데이터:", docSnap.data());
-          setContents(docSnap.data());
+          setContent(docSnap.data());
         } else {
           console.log("문서가 존재하지 않습니다.");
         }
@@ -29,21 +29,21 @@ const BoardContent = () => {
 
   return (
     <div>
-      {contents ? (
+      {content ? (
         <div>
-          <h2>{contents.title}</h2>
+          <h2>{content.title}</h2>
           <p>
-            <strong>작성자:</strong> {contents.nickname}
+            <strong>작성자:</strong> {content.nickname}
           </p>
           <p>
-            <strong>내용:</strong> {contents.content}
+            <strong>내용:</strong> {content.content}
           </p>
           <p>
-            <strong>평점:</strong> {contents.rating}
+            <strong>평점:</strong> {content.rating}
           </p>
           <p>
             <strong>작성일:</strong>{" "}
-            {new Date(contents.createdAt).toLocaleString()}
+            {new Date(content.createdAt).toLocaleString()}
           </p>
         </div>
       ) : (

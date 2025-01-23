@@ -38,3 +38,8 @@
   font-weight: 700;
   font-size: 14px;
 }
+
+.board-write-button:hover {
+  background-color: rgb(84, 81, 203);
+  cursor: pointer;
+}

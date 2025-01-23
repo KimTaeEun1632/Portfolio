@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 
 import "./BoardList.css";
+import getRelativeTime from "../getRelativeTime ";
 
 const BoardList = () => {
   const [contents, setContents] = useState([]);
@@ -32,11 +33,31 @@ const BoardList = () => {
   }, []);
 
   return (
-    <div className="BoardList-wrapper">
+    <div className="board-list-wrapper">
+      <div className="board-list-header">
+        <div></div>
+        <div>드롭다운</div>
+      </div>
       {contents.map((content) => (
-        <a key={content.id} href={`/board/${content.id}`}>
-          {content.title}
-        </a>
+        <section className="board-list-body">
+          <div>
+            <a
+              className="board-list-link"
+              key={content.id}
+              href={`/board/${content.id}`}
+            >
+              {content.title}
+            </a>
+          </div>
+          <div className="board-footer">
+            <img src="/images/starOnIcon.svg" alt="별점" />
+            <div>({content.rating})</div>
+            <div className="board-nickname">{content.nickname}</div>
+            <div className="board-info">
+              {getRelativeTime(content.createdAt)}
+            </div>
+          </div>
+        </section>
       ))}
     </div>
   );
