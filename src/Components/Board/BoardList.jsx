@@ -3,17 +3,21 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 
 import "./BoardList.css";
+
 import getRelativeTime from "../getRelativeTime ";
 
 const BoardList = () => {
   const [contents, setContents] = useState([]);
-  const fetchContents = async () => {
+  const [sortValue, setSortValue] = useState("최신순");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const fetchContents = async (orderField = "createdAt") => {
     const contentsQuery = query(
       collection(db, "contents"),
-      orderBy("createdAt", "desc")
+      orderBy(orderField, "desc")
     );
-    const spanshot = await getDocs(contentsQuery);
-    const contents = spanshot.docs.map((doc) => {
+    const snapshot = await getDocs(contentsQuery);
+    const contents = snapshot.docs.map((doc) => {
       const { content, createdAt, nickname, password, rating, title } =
         doc.data();
       return {
@@ -28,24 +32,60 @@ const BoardList = () => {
     });
     setContents(contents);
   };
+
+  const handleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleDropdownClick = (item) => {
+    setSortValue(item);
+    setIsOpen(false);
+  };
+
   useEffect(() => {
-    fetchContents();
-  }, []);
+    if (sortValue === "최신순") {
+      fetchContents("createdAt");
+    } else if (sortValue === "별점순") {
+      fetchContents("rating");
+    }
+  }, [sortValue]);
 
   return (
     <div className="board-list-wrapper">
       <div className="board-list-header">
-        <div></div>
-        <div>드롭다운</div>
+        <div onClick={handleDropdown} className="board-dropdown-wrapper">
+          <button className="board-dropdown">{sortValue}</button>
+          <svg
+            fill="none"
+            strokeWidth="1.5"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m19.5 8.25-7.5 7.5-7.5-7.5"
+            ></path>
+          </svg>
+
+          {isOpen && (
+            <div className="board-dropdown-button">
+              <button onClick={() => handleDropdownClick("최신순")}>
+                최신순
+              </button>
+              <button onClick={() => handleDropdownClick("별점순")}>
+                별점순
+              </button>
+            </div>
+          )}
+        </div>
       </div>
       {contents.map((content) => (
-        <section className="board-list-body">
+        <section className="board-list-body" key={content.id}>
           <div>
-            <a
-              className="board-list-link"
-              key={content.id}
-              href={`/board/${content.id}`}
-            >
+            <a className="board-list-link" href={`/board/${content.id}`}>
               {content.title}
             </a>
           </div>
