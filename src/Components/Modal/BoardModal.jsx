@@ -8,6 +8,7 @@ const BoardModal = ({ setIsOpenModal }) => {
   const [content, setContent] = useState("");
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
 
   const handleStarClick = (index) => {
     setRating(index + 1);
@@ -15,12 +16,20 @@ const BoardModal = ({ setIsOpenModal }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!content || content.length > 200 || !rating || !nickname || !password)
+    if (
+      !content ||
+      content.length > 200 ||
+      !rating ||
+      !nickname ||
+      !password ||
+      !title
+    )
       return;
 
     // 데이터 제출 로직 추가
     try {
       await addDoc(collection(db, "contents"), {
+        title,
         content,
         rating,
         nickname,
@@ -74,7 +83,7 @@ const BoardModal = ({ setIsOpenModal }) => {
               <input
                 type="text"
                 name="nickname"
-                placeholder="Nickname"
+                placeholder="닉네임"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 required
@@ -82,7 +91,7 @@ const BoardModal = ({ setIsOpenModal }) => {
               <input
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="비밀번호"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -91,12 +100,21 @@ const BoardModal = ({ setIsOpenModal }) => {
           </div>
         </div>
         <div className="modal-textarea-wrapper">
+          <input
+            className="modal-title-textarea"
+            type="text"
+            name="title"
+            placeholder="제목을 입력해주세요"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
           <textarea
             className="modal-textarea"
             onChange={(e) => setContent(e.target.value)}
             maxLength={200}
             value={content}
-            placeholder="자유롭게 작성해주세요."
+            placeholder="자유롭게 작성해주세요"
           />
           <button className="modal-submit-button" type="submit">
             작성하기
