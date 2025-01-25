@@ -59,3 +59,21 @@
 .board-content-detail-footer {
   margin-top: 40px;
 }
+
+.board-content-detail-reply {
+  height: 110px;
+  width: 100%;
+  border-radius: 4px;
+  resize: none;
+  border: 1px solid #79747e;
+  padding: 8px;
+}
+
+.board-content-detail-footer-header {
+  margin-bottom: 8px;
+}
+
+.board-content-detail-footer-body {
+  word-break: normal;
+  word-wrap: break-word;
+}
