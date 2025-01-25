@@ -16,15 +16,7 @@ const BoardModal = ({ setIsOpenModal }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (
-      !content ||
-      content.length > 200 ||
-      !rating ||
-      !nickname ||
-      !password ||
-      !title
-    )
-      return;
+    if (!content || !rating || !nickname || !password || !title) return;
 
     // 데이터 제출 로직 추가
     try {
@@ -106,13 +98,13 @@ const BoardModal = ({ setIsOpenModal }) => {
             name="title"
             placeholder="제목을 입력해주세요"
             value={title}
+            maxLength={78}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
           <textarea
             className="modal-textarea"
             onChange={(e) => setContent(e.target.value)}
-            maxLength={200}
             value={content}
             placeholder="자유롭게 작성해주세요"
           />
