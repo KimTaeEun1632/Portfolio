@@ -1,4 +1,10 @@
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 
@@ -11,28 +17,6 @@ const BoardList = () => {
   const [sortValue, setSortValue] = useState("최신순");
   const [isOpen, setIsOpen] = useState(false);
 
-  const fetchContents = async (orderField = "createdAt") => {
-    const contentsQuery = query(
-      collection(db, "contents"),
-      orderBy(orderField, "desc")
-    );
-    const snapshot = await getDocs(contentsQuery);
-    const contents = snapshot.docs.map((doc) => {
-      const { content, createdAt, nickname, password, rating, title } =
-        doc.data();
-      return {
-        content,
-        createdAt,
-        nickname,
-        password,
-        rating,
-        title,
-        id: doc.id,
-      };
-    });
-    setContents(contents);
-  };
-
   const handleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -43,11 +27,44 @@ const BoardList = () => {
   };
 
   useEffect(() => {
+    let unsubscribe = null;
+
+    const fetchContents = async (orderField = "createdAt") => {
+      const contentsQuery = query(
+        collection(db, "contents"),
+        orderBy(orderField, "desc"),
+        limit(25)
+      );
+
+      unsubscribe = await onSnapshot(contentsQuery, (snapshot) => {
+        const contents = snapshot.docs.map((doc) => {
+          const { content, createdAt, nickname, password, rating, title } =
+            doc.data();
+          return {
+            content,
+            createdAt,
+            nickname,
+            password,
+            rating,
+            title,
+            id: doc.id,
+          };
+        });
+        setContents(contents);
+      });
+    };
+
     if (sortValue === "최신순") {
       fetchContents("createdAt");
     } else if (sortValue === "별점순") {
       fetchContents("rating");
     }
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, [sortValue]);
 
   return (
