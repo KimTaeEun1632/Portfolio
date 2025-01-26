@@ -13,20 +13,22 @@ import "./boardContent.css";
 const BoardContent = () => {
   const [content, setContent] = useState(null);
   const [reply, setReply] = useState("");
-  const [replies, setReplies] = useState([]); // 댓글 목록 상태 추가
+  const [replies, setReplies] = useState([]);
+  const [nickname, setNickname] = useState("");
 
   const { id } = useParams();
   const boardId = id;
   const docRef = useMemo(() => doc(db, "contents", boardId), [boardId]);
 
-  // 댓글 등록 함수
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!reply) return;
+    if (!reply || !nickname) return;
 
     try {
       await addDoc(collection(db, "contents", boardId, "replies"), {
         reply,
+        nickname,
+        createdAt: Date.now(),
       });
       setReply("");
     } catch (e) {
@@ -101,27 +103,47 @@ const BoardContent = () => {
 
           <div className="board-content-detail-footer">
             <div className="board-content-detail-footer-header">
-              <p>댓글 ({replies.length})</p>
+              <strong>댓글 {replies.length}</strong>
             </div>
             <div className="board-content-detail-footer-body">
               <form onSubmit={handleSubmit}>
                 <div>
+                  <div className="board-content-reply-nickname">
+                    <strong>닉네임: </strong>
+                    <input
+                      type="text"
+                      name="nickname"
+                      placeholder="닉네임을 입력해 주세요"
+                      value={nickname}
+                      onChange={(e) => setNickname(e.target.value)}
+                      required
+                    />
+                  </div>
                   <textarea
-                    className="board-content-detail-reply"
+                    className="board-content-reply"
                     placeholder="댓글을 입력해 주세요."
                     value={reply}
                     onChange={(e) => setReply(e.target.value)}
                   />
                 </div>
-                <div>
-                  <button type="submit">등록</button>
+                <div className="board-content-reply-button-wrapper">
+                  <p className="board-content-reply-caution">
+                    ※ 닉네임과 댓글을 입력해 주세요
+                  </p>
+                  <button className="board-content-reply-button" type="submit">
+                    등록
+                  </button>
                 </div>
               </form>
 
               <div className="board-content-replies">
                 {replies.length > 0 ? (
                   replies.map((r) => (
-                    <div key={r.id} className="reply-item">
+                    <div key={r.id} className="board-reply-item">
+                      <p className="board-reply-nickname">{r.nickname}</p>
+                      <p className="board-reply-date">
+                        {new Date(r.createdAt).toLocaleString()}
+                      </p>
                       <p>{r.reply}</p>
                     </div>
                   ))

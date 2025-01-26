@@ -16,6 +16,7 @@ const BoardList = () => {
   const [contents, setContents] = useState([]);
   const [sortValue, setSortValue] = useState("최신순");
   const [isOpen, setIsOpen] = useState(false);
+  console.log(contents);
 
   const handleDropdown = () => {
     setIsOpen(!isOpen);
@@ -25,7 +26,6 @@ const BoardList = () => {
     setSortValue(item);
     setIsOpen(false);
   };
-
   useEffect(() => {
     let unsubscribe = null;
 
@@ -38,15 +38,9 @@ const BoardList = () => {
 
       unsubscribe = await onSnapshot(contentsQuery, (snapshot) => {
         const contents = snapshot.docs.map((doc) => {
-          const { content, createdAt, nickname, password, rating, title } =
-            doc.data();
+          const { password, ...rest } = doc.data(); // password 제외
           return {
-            content,
-            createdAt,
-            nickname,
-            password,
-            rating,
-            title,
+            ...rest,
             id: doc.id,
           };
         });

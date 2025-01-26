@@ -54,19 +54,21 @@
   padding-top: 32px;
   word-break: normal;
   word-wrap: break-word;
+  min-height: 200px;
 }
 
 .board-content-detail-footer {
   margin-top: 40px;
 }
 
-.board-content-detail-reply {
+.board-content-reply {
   height: 110px;
   width: 100%;
   border-radius: 4px;
   resize: none;
-  border: 1px solid #79747e;
+  border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 8px;
+  margin-top: 4px;
 }
 
 .board-content-detail-footer-header {
@@ -76,4 +78,63 @@
 .board-content-detail-footer-body {
   word-break: normal;
   word-wrap: break-word;
+}
+
+.board-content-reply-nickname {
+  margin-top: 4px;
+}
+
+.board-content-reply-button-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.board-content-reply-button {
+  display: flex;
+  width: 100px;
+  height: 40px;
+  transform: rotate(-0.068deg);
+  padding: 0 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: rgb(109, 106, 264);
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.board-content-reply-button:hover {
+  background-color: rgb(84, 81, 203);
+  cursor: pointer;
+}
+
+.board-content-replies {
+  margin-top: 16px;
+  padding: 0 16px;
+}
+
+.board-reply-item {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.board-content-reply-caution {
+  font-size: 14px;
+  color: gray;
+}
+
+.board-reply-nickname {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.board-reply-date {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #999999;
 }
