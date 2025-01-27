@@ -23,6 +23,17 @@ const Login = () => {
     }
   };
 
+  const handleLogout = async (event) => {
+    if (isLoading) return;
+    event.preventDefault();
+    try {
+      await auth.signOut();
+      console.log("로그아웃 성공");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -36,6 +47,9 @@ const Login = () => {
           required
         />
         <input type="submit" value={isLoading ? "Loading..." : "로그인"} />
+      </form>
+      <form onSubmit={handleLogout}>
+        <input type="submit" value={isLoading ? "Loading..." : "로그아웃"} />
       </form>
     </div>
   );

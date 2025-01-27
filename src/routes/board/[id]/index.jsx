@@ -7,7 +7,7 @@ import {
   runTransaction,
 } from "firebase/firestore";
 import React, { useEffect, useMemo, useState } from "react";
-import { db } from "../../../firebase";
+import { auth, db } from "../../../firebase";
 import { useParams } from "react-router-dom";
 import "./boardContent.css";
 
@@ -15,15 +15,15 @@ const BoardContent = () => {
   const [content, setContent] = useState(null);
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
-  const [nickname, setNickname] = useState("");
 
   const { id } = useParams();
   const boardId = id;
   const docRef = useMemo(() => doc(db, "contents", boardId), [boardId]);
+  const user = auth.currentUser;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!reply || !nickname) return;
+    if (!reply || !user) return;
 
     try {
       const repliesCollectionRef = collection(
@@ -35,7 +35,8 @@ const BoardContent = () => {
 
       await addDoc(repliesCollectionRef, {
         reply,
-        nickname,
+        nickname: user.displayName,
+        userId: user.uid,
         createdAt: Date.now(),
       });
 
@@ -130,17 +131,6 @@ const BoardContent = () => {
             <div className="board-content-detail-footer-body">
               <form onSubmit={handleSubmit}>
                 <div>
-                  <div className="board-content-reply-nickname">
-                    <strong>닉네임: </strong>
-                    <input
-                      type="text"
-                      name="nickname"
-                      placeholder="닉네임을 입력해 주세요"
-                      value={nickname}
-                      onChange={(e) => setNickname(e.target.value)}
-                      required
-                    />
-                  </div>
                   <textarea
                     className="board-content-reply"
                     placeholder="댓글을 입력해 주세요."
@@ -149,9 +139,6 @@ const BoardContent = () => {
                   />
                 </div>
                 <div className="board-content-reply-button-wrapper">
-                  <p className="board-content-reply-caution">
-                    ※ 닉네임과 댓글을 입력해 주세요
-                  </p>
                   <button className="board-content-reply-button" type="submit">
                     등록
                   </button>

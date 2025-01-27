@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "./BoardModal.css";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 const BoardModal = ({ setIsOpenModal }) => {
   const [rating, setRating] = useState(0);
   const [content, setContent] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
+
+  const user = auth.currentUser;
 
   const handleStarClick = (index) => {
     setRating(index + 1);
@@ -16,16 +16,14 @@ const BoardModal = ({ setIsOpenModal }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!content || !rating || !nickname || !password || !title) return;
-
-    // 데이터 제출 로직 추가
+    if (!user || !content || !rating || !title) return;
     try {
       await addDoc(collection(db, "contents"), {
+        nickname: user.displayName || "Anonymous",
+        userId: user.uid,
         title,
         content,
         rating,
-        nickname,
-        password,
         createdAt: Date.now(),
       });
     } catch (e) {
@@ -53,7 +51,7 @@ const BoardModal = ({ setIsOpenModal }) => {
               자유롭게 글을 쓰고 사이트에 대해 평가 해주세요!
             </p>
             <p className="modal-caution">
-              ※ 별점과 닉네임, 비밀번호를 입력해 주세요
+              ※ 부적절한 단어가 포함 될 시 게시물이 삭제 될 수 있습니다
             </p>
           </div>
           <div className="modal-input-wrapper">
@@ -71,24 +69,7 @@ const BoardModal = ({ setIsOpenModal }) => {
                 </div>
               ))}
             </div>
-            <div className="modal-input">
-              <input
-                type="text"
-                name="nickname"
-                placeholder="닉네임"
-                value={nickname}
-                onChange={(e) => setNickname(e.target.value)}
-                required
-              />
-              <input
-                type="password"
-                name="password"
-                placeholder="비밀번호"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+            <div className="modal-input"></div>
           </div>
         </div>
         <div className="modal-textarea-wrapper">
