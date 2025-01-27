@@ -38,7 +38,7 @@ const BoardList = () => {
 
       unsubscribe = await onSnapshot(contentsQuery, (snapshot) => {
         const contents = snapshot.docs.map((doc) => {
-          const { password, ...rest } = doc.data(); // password 제외
+          const { password, ...rest } = doc.data();
           return {
             ...rest,
             id: doc.id,
@@ -52,6 +52,8 @@ const BoardList = () => {
       fetchContents("createdAt");
     } else if (sortValue === "별점순") {
       fetchContents("rating");
+    } else {
+      fetchContents("replyCount");
     }
 
     return () => {
@@ -89,6 +91,9 @@ const BoardList = () => {
               <button onClick={() => handleDropdownClick("별점순")}>
                 별점순
               </button>
+              <button onClick={() => handleDropdownClick("댓글순")}>
+                댓글순
+              </button>
             </div>
           )}
         </div>
@@ -96,9 +101,18 @@ const BoardList = () => {
       {contents.map((content) => (
         <section className="board-list-body" key={content.id}>
           <div>
-            <a className="board-list-link" href={`/board/${content.id}`}>
-              {content.title}
-            </a>
+            {content.replyCount > 0 ? (
+              <a className="board-list-link" href={`/board/${content.id}`}>
+                {content.title}{" "}
+                <span className="board-list-replyCount">
+                  [{content.replyCount}]
+                </span>
+              </a>
+            ) : (
+              <a className="board-list-link" href={`/board/${content.id}`}>
+                {content.title}
+              </a>
+            )}
           </div>
           <div className="board-footer">
             <img src="/images/starOnIcon.svg" alt="별점" />

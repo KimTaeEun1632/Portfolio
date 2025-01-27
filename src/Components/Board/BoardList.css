@@ -42,6 +42,9 @@
   height: 20px;
 }
 
+.board-list-replyCount {
+  color: rgb(120, 118, 255);
+}
 .board-nickname {
   font-size: 14px;
   color: #6e6e6e;

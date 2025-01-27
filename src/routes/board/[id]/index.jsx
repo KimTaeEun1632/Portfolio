@@ -4,6 +4,7 @@ import {
   doc,
   getDoc,
   onSnapshot,
+  runTransaction,
 } from "firebase/firestore";
 import React, { useEffect, useMemo, useState } from "react";
 import { db } from "../../../firebase";
@@ -25,11 +26,32 @@ const BoardContent = () => {
     if (!reply || !nickname) return;
 
     try {
-      await addDoc(collection(db, "contents", boardId, "replies"), {
+      const repliesCollectionRef = collection(
+        db,
+        "contents",
+        boardId,
+        "replies"
+      );
+
+      await addDoc(repliesCollectionRef, {
         reply,
         nickname,
         createdAt: Date.now(),
       });
+
+      const boardDocRef = doc(db, "contents", boardId);
+      await runTransaction(db, async (transaction) => {
+        const boardDocSnap = await transaction.get(boardDocRef);
+
+        if (!boardDocSnap.exists()) {
+          throw new Error("게시글을 찾을 수 없습니다.");
+        }
+
+        const newReplyCount = (boardDocSnap.data().replyCount || 0) + 1;
+
+        transaction.update(boardDocRef, { replyCount: newReplyCount });
+      });
+
       setReply("");
     } catch (e) {
       console.error("댓글 등록 오류:", e);
