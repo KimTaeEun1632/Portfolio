@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./BoardLayout.css";
-import Login from "../Login/Login";
 
 const BoardLayout = () => {
   return (
@@ -15,7 +14,11 @@ const BoardLayout = () => {
           <p>junior ·</p> <p>FrontEnd ·</p>
           <p>Portfolio</p>
         </div>
-        <Login />
+        <div>
+          <p className="board-caution">
+            반갑습니다. 서로 소통하고 자유롭게 의견을 남기는 공간입니다.
+          </p>
+        </div>
       </div>
       <Outlet />
     </>

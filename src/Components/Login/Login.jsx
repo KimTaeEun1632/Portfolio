@@ -48,7 +48,6 @@ const Login = () => {
     <>
       {isLoggedIn ? (
         <>
-          <p>반갑습니다.</p>
           <form onSubmit={handleLogout}>
             <input
               type="submit"
