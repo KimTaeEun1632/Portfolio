@@ -10,6 +10,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { auth, db } from "../../../firebase";
 import { useParams } from "react-router-dom";
 import "./boardContent.css";
+import Star from "../../../Components/Star";
 
 const BoardContent = () => {
   const [content, setContent] = useState(null);
@@ -103,7 +104,7 @@ const BoardContent = () => {
               <a className="board-content-detail-header-link" href="/board">
                 자유게시판
               </a>
-              <p>{content.rating}</p>
+              <Star star={content.rating} />
               <h2 className="board-content-detail-header-title">
                 {content.title}
               </h2>
