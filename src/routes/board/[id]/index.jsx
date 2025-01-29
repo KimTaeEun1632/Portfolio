@@ -23,7 +23,7 @@ const BoardContent = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!reply || !user) return;
+    if (!reply || !user || reply.length > 500) return;
 
     try {
       const repliesCollectionRef = collection(
@@ -121,7 +121,7 @@ const BoardContent = () => {
             </div>
           </div>
           <div className="board-content-detail-body">
-            <p>{content.content}</p>
+            <p style={{ whiteSpace: "pre-wrap" }}>{content.content}</p>
           </div>
 
           <div className="board-content-detail-footer">
@@ -135,6 +135,7 @@ const BoardContent = () => {
                     className="board-content-reply"
                     placeholder="댓글을 입력해 주세요."
                     value={reply}
+                    maxLength={500}
                     onChange={(e) => setReply(e.target.value)}
                   />
                 </div>
@@ -153,7 +154,7 @@ const BoardContent = () => {
                       <p className="board-reply-date">
                         {new Date(r.createdAt).toLocaleString()}
                       </p>
-                      <p>{r.reply}</p>
+                      <p style={{ whiteSpace: "pre-wrap" }}>{r.reply}</p>
                     </div>
                   ))
                 ) : (

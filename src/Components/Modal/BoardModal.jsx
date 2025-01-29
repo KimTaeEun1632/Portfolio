@@ -88,6 +88,7 @@ const BoardModal = ({ setIsOpenModal }) => {
             onChange={(e) => setContent(e.target.value)}
             value={content}
             placeholder="자유롭게 작성해주세요"
+            style={{ whiteSpace: "pre-wrap" }}
           />
           <button className="modal-submit-button" type="submit">
             작성하기
