@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./Nav.css";
+import Login from "../Login/Login";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Nav = () => {
   const [showNavBar2, setShowNavBar2] = useState(false);
+  const [isOpenLogin, setIsOpenLogin] = useState(false);
+  const { isLoggedIn } = useAuth();
 
+  const handleOpenLogin = () => {
+    if (isOpenLogin === false) {
+      setIsOpenLogin(true);
+    } else setIsOpenLogin(false);
+  };
   // 스크롤 이벤트 감지
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +42,13 @@ const Nav = () => {
         </div>
         <nav className="navButton">
           <a href="#about">About</a>
-          <a href="#skill">Skills</a>
+          <a href="/board">board</a>
           <a href="#project">Projects</a>
           <a href="#contact">Contact</a>
+          <div onClick={handleOpenLogin}>
+            {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
+          </div>
+          {isOpenLogin && <Login />}
         </nav>
       </div>
 
@@ -47,7 +60,7 @@ const Nav = () => {
           </a>
           <nav>
             <a href="#about">About</a>
-            <a href="#skill">Skills</a>
+            <a href="/board">board</a>
             <a href="#project">Projects</a>
             <a href="#contact">Contact</a>
           </nav>
