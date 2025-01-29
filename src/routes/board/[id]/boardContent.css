@@ -69,6 +69,7 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 8px;
   margin-top: 4px;
+  white-space: pre-wrap;
 }
 
 .board-content-detail-footer-header {

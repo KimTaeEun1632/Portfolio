@@ -6,10 +6,11 @@ import ErrorPage from "./error-page";
 import ProjectDetail from "./routes/projectDetail/project-[projectId]";
 import Main from "./Components/Main/Main";
 import items from "./mock.json";
-import Login from "./routes/login";
-import Layout from "./Components/Layout";
+import Layout from "./Components/Layout/Layout";
 import Board from "./routes/board/board";
 import BoardContent from "./routes/board/[id]";
+import BoardLayout from "./Components/Layout/BoardLayout";
+import { AuthProvider } from "./contexts/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Main items={items} />,
       },
       {
@@ -27,22 +28,27 @@ const router = createBrowserRouter([
       },
       {
         path: "board",
-        element: <Board />,
-      },
-      {
-        path: "board/:id",
-        element: <BoardContent />,
+        element: <BoardLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <Board />,
+          },
+          {
+            path: ":id",
+            element: <BoardContent />,
+          },
+        ],
       },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

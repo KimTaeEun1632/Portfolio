@@ -85,6 +85,7 @@
   resize: none;
   border: 1px solid #79747e;
   padding: 8px;
+  white-space: pre-wrap;
 }
 
 .modal-title-textarea::placeholder {
