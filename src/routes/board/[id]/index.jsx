@@ -5,23 +5,31 @@ import {
   getDoc,
   onSnapshot,
   runTransaction,
+  updateDoc,
 } from "firebase/firestore";
 import React, { useEffect, useMemo, useState } from "react";
 import { auth, db } from "../../../firebase";
 import { useParams } from "react-router-dom";
 import "./boardContent.css";
 import Star from "../../../Components/Star";
+import BoardEdit from "../../../Components/Board/BoardEdit";
+import BoardReplyEdit from "../../../Components/Board/BoardReplyEdit";
 
 const BoardContent = () => {
   const [content, setContent] = useState(null);
   const [reply, setReply] = useState("");
   const [replies, setReplies] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedContent, setEditedContent] = useState("");
+  const [editedReply, setEditedReply] = useState("");
+  const [editingReplyId, setEditingReplyId] = useState(null);
 
   const { id } = useParams();
   const boardId = id;
   const docRef = useMemo(() => doc(db, "contents", boardId), [boardId]);
   const user = auth.currentUser;
 
+  // 댓글 쓰기
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!reply || !user || reply.length > 500) return;
@@ -61,6 +69,67 @@ const BoardContent = () => {
     }
   };
 
+  // 게시물 수정정
+  const handleEditClick = () => {
+    if (content) {
+      setEditedContent(content.content);
+      setIsEditing(true);
+    }
+  };
+
+  const handleEdit = async () => {
+    if (!editedContent.trim()) {
+      alert("내용을 입력해주세요.");
+      return;
+    }
+
+    try {
+      await updateDoc(docRef, {
+        content: editedContent,
+      });
+
+      setContent((prev) => ({
+        ...prev,
+        content: editedContent,
+      }));
+      setIsEditing(false);
+      alert("게시글이 수정되었습니다.");
+    } catch (error) {
+      console.error("게시글 수정 오류:", error);
+      alert("게시글 수정에 실패했습니다.");
+    }
+  };
+
+  // 댓글 수정
+  const handleReplyEditClick = (replyId, reply) => {
+    setEditingReplyId(replyId);
+    setEditedReply(reply);
+  };
+
+  const handleEditReply = async (replyId) => {
+    if (!editedReply.trim()) {
+      alert("댓글을 입력해주세요.");
+      return;
+    }
+
+    try {
+      const replyDocRef = doc(db, "contents", boardId, "replies", replyId);
+      await updateDoc(replyDocRef, { reply: editedReply });
+
+      setReplies((prevReplies) =>
+        prevReplies.map((r) =>
+          r.id === replyId ? { ...r, reply: editedReply } : r
+        )
+      );
+      setEditingReplyId(null);
+      alert("댓글이 수정되었습니다.");
+    } catch (error) {
+      console.error("댓글 수정 오류:", error);
+      alert("댓글 수정에 실패했습니다.");
+    }
+  };
+
+  // 게시물 가져오기
   useEffect(() => {
     const fetchDocument = async () => {
       try {
@@ -79,6 +148,7 @@ const BoardContent = () => {
     fetchDocument();
   }, [docRef]);
 
+  // 댓글 가져오기
   useEffect(() => {
     const repliesCollectionRef = collection(db, "contents", boardId, "replies");
 
@@ -118,13 +188,28 @@ const BoardContent = () => {
                   {new Date(content.createdAt).toLocaleString()}
                 </p>
               </div>
-              <div>드롭다운</div>
+              {user && user.uid === content.userId && (
+                <BoardEdit docRef={docRef} onEdit={handleEditClick} />
+              )}
             </div>
           </div>
           <div className="board-content-detail-body">
-            <p style={{ whiteSpace: "pre-wrap" }}>{content.content}</p>
+            {isEditing ? (
+              <textarea
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+                className="edit-content-input"
+              />
+            ) : (
+              <p style={{ whiteSpace: "pre-wrap" }}>{content.content}</p>
+            )}
           </div>
-
+          {isEditing && (
+            <div className="edit-buttons">
+              <button onClick={handleEdit}>수정 완료</button>
+              <button onClick={() => setIsEditing(false)}>취소</button>
+            </div>
+          )}
           <div className="board-content-detail-footer">
             <div className="board-content-detail-footer-header">
               <strong>댓글 {replies.length}</strong>
@@ -151,11 +236,40 @@ const BoardContent = () => {
                 {replies.length > 0 ? (
                   replies.map((r) => (
                     <div key={r.id} className="board-reply-item">
-                      <p className="board-reply-nickname">{r.nickname}</p>
-                      <p className="board-reply-date">
-                        {new Date(r.createdAt).toLocaleString()}
-                      </p>
-                      <p style={{ whiteSpace: "pre-wrap" }}>{r.reply}</p>
+                      <div className="board-reply-top">
+                        <div>
+                          <p className="board-reply-nickname">{r.nickname}</p>
+                          <p className="board-reply-date">
+                            {new Date(r.createdAt).toLocaleString()}
+                          </p>
+                        </div>
+                        {user && user.uid === r.userId && (
+                          <BoardReplyEdit
+                            onEdit={() => handleReplyEditClick(r.id, r.reply)}
+                            boardId={boardId}
+                            replyId={r.id}
+                          />
+                        )}
+                      </div>
+                      {editingReplyId === r.id ? (
+                        <div>
+                          <textarea
+                            value={editedReply}
+                            onChange={(e) => setEditedReply(e.target.value)}
+                            className="edit-reply-input"
+                          />
+                          <div className="edit-reply-buttons">
+                            <button onClick={() => handleEditReply(r.id)}>
+                              수정 완료
+                            </button>
+                            <button onClick={() => setEditingReplyId(null)}>
+                              취소
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <p style={{ whiteSpace: "pre-wrap" }}>{r.reply}</p>
+                      )}
                     </div>
                   ))
                 ) : (
