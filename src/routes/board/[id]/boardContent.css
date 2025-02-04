@@ -133,9 +133,15 @@
   color: gray;
 }
 
+.board-reply-nickname-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .board-reply-nickname {
   font-size: 14px;
   font-weight: 700;
+  margin-right: 4px;
 }
 
 .board-reply-date {

@@ -14,6 +14,7 @@ import "./boardContent.css";
 import Star from "../../../Components/Star";
 import BoardEdit from "../../../Components/Board/BoardEdit";
 import BoardReplyEdit from "../../../Components/Board/BoardReplyEdit";
+import Badge from "../../../Components/Badge/Badge";
 
 const BoardContent = () => {
   const [content, setContent] = useState(null);
@@ -238,7 +239,10 @@ const BoardContent = () => {
                     <div key={r.id} className="board-reply-item">
                       <div className="board-reply-top">
                         <div>
-                          <p className="board-reply-nickname">{r.nickname}</p>
+                          <div className="board-reply-nickname-wrapper">
+                            <p className="board-reply-nickname">{r.nickname}</p>
+                            <Badge item={r} user={user} />
+                          </div>
                           <p className="board-reply-date">
                             {new Date(r.createdAt).toLocaleString()}
                           </p>
