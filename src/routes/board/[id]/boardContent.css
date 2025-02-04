@@ -68,6 +68,13 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 8px;
   margin-top: 4px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.board-content-reply:focus {
+  border-color: #6d6aff;
+  box-shadow: 0 0 6px rgba(109, 106, 255, 0.3);
 }
 
 .board-reply-top {

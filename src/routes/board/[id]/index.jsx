@@ -241,7 +241,7 @@ const BoardContent = () => {
                         <div>
                           <div className="board-reply-nickname-wrapper">
                             <p className="board-reply-nickname">{r.nickname}</p>
-                            <Badge item={r} user={user} />
+                            {content.userId === r.userId && <Badge item={r} />}
                           </div>
                           <p className="board-reply-date">
                             {new Date(r.createdAt).toLocaleString()}
