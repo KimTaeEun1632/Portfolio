@@ -15,6 +15,8 @@ import Star from "../../../Components/Star";
 import BoardEdit from "../../../Components/Board/BoardEdit";
 import BoardReplyEdit from "../../../Components/Board/BoardReplyEdit";
 import Badge from "../../../Components/Badge/Badge";
+import BoardSubReply from "../../../Components/Board/BoardSubReply";
+import SubReplySubmit from "../../../Components/Board/SubReplySubmit";
 
 const BoardContent = () => {
   const [content, setContent] = useState(null);
@@ -24,6 +26,7 @@ const BoardContent = () => {
   const [editedContent, setEditedContent] = useState("");
   const [editedReply, setEditedReply] = useState("");
   const [editingReplyId, setEditingReplyId] = useState(null);
+  const [openReplyId, setOpenReplyId] = useState(null);
 
   const { id } = useParams();
   const boardId = id;
@@ -31,7 +34,7 @@ const BoardContent = () => {
   const user = auth.currentUser;
 
   // 댓글 쓰기
-  const handleSubmit = async (event) => {
+  const handleReplySubmit = async (event, parent = null) => {
     event.preventDefault();
     if (!reply || !user || reply.length > 500) return;
 
@@ -48,6 +51,9 @@ const BoardContent = () => {
         nickname: user.displayName,
         userId: user.uid,
         createdAt: Date.now(),
+        depth: parent ? parent.depth + 1 : 0,
+        parentId: parent ? parent.id : null,
+        path: parent ? `${parent.path}/${parent.id}` : "",
       });
 
       const boardDocRef = doc(db, "contents", boardId);
@@ -211,12 +217,13 @@ const BoardContent = () => {
               <button onClick={() => setIsEditing(false)}>취소</button>
             </div>
           )}
+
           <div className="board-content-detail-footer">
             <div className="board-content-detail-footer-header">
               <strong>댓글 {replies.length}</strong>
             </div>
             <div className="board-content-detail-footer-body">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleReplySubmit}>
                 <div>
                   <textarea
                     className="board-content-reply"
@@ -235,47 +242,85 @@ const BoardContent = () => {
 
               <div className="board-content-replies">
                 {replies.length > 0 ? (
-                  replies.map((r) => (
-                    <div key={r.id} className="board-reply-item">
-                      <div className="board-reply-top">
-                        <div>
-                          <div className="board-reply-nickname-wrapper">
-                            <p className="board-reply-nickname">{r.nickname}</p>
-                            {content.userId === r.userId && <Badge item={r} />}
+                  replies
+                    .filter((r) => r.depth === 0) // 🔽 상위 댓글(depth 0)만 필터링
+                    .map((r) => (
+                      <div key={r.id} className="board-reply-item">
+                        <div className="board-reply-top">
+                          <div>
+                            <div className="board-reply-nickname-wrapper">
+                              <p className="board-reply-nickname">
+                                {r.nickname}
+                              </p>
+                              {content.userId === r.userId && (
+                                <Badge item={r} />
+                              )}
+                            </div>
+                            <p className="board-reply-date">
+                              {new Date(r.createdAt).toLocaleString()}
+                            </p>
                           </div>
-                          <p className="board-reply-date">
-                            {new Date(r.createdAt).toLocaleString()}
-                          </p>
+                          {user && user.uid === r.userId && (
+                            <BoardReplyEdit
+                              onEdit={() => handleReplyEditClick(r.id, r.reply)}
+                              boardId={boardId}
+                              replyId={r.id}
+                            />
+                          )}
                         </div>
-                        {user && user.uid === r.userId && (
-                          <BoardReplyEdit
-                            onEdit={() => handleReplyEditClick(r.id, r.reply)}
-                            boardId={boardId}
-                            replyId={r.id}
-                          />
+                        {editingReplyId === r.id ? (
+                          <div>
+                            <textarea
+                              value={editedReply}
+                              onChange={(e) => setEditedReply(e.target.value)}
+                              className="edit-reply-input"
+                            />
+                            <div className="edit-reply-buttons">
+                              <button onClick={() => handleEditReply(r.id)}>
+                                수정 완료
+                              </button>
+                              <button onClick={() => setEditingReplyId(null)}>
+                                취소
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="board-reply-body">
+                              <p style={{ whiteSpace: "pre-wrap" }}>
+                                {r.reply}
+                              </p>
+                              <button
+                                className="subReply-button"
+                                onClick={() =>
+                                  setOpenReplyId(
+                                    openReplyId === r.id ? null : r.id
+                                  )
+                                }
+                              >
+                                {openReplyId === r.id ? "취소" : "답글달기"}
+                              </button>
+                            </div>
+                            {openReplyId === r.id && (
+                              <SubReplySubmit
+                                user={user}
+                                boardId={boardId}
+                                parentId={r.id}
+                                parent={r}
+                              />
+                            )}
+                            {/* 🔽 대댓글 컴포넌트 추가 */}
+                            <BoardSubReply
+                              user={user}
+                              content={content}
+                              boardId={boardId}
+                              parentId={r.id}
+                              depth={1}
+                            />
+                          </>
                         )}
                       </div>
-                      {editingReplyId === r.id ? (
-                        <div>
-                          <textarea
-                            value={editedReply}
-                            onChange={(e) => setEditedReply(e.target.value)}
-                            className="edit-reply-input"
-                          />
-                          <div className="edit-reply-buttons">
-                            <button onClick={() => handleEditReply(r.id)}>
-                              수정 완료
-                            </button>
-                            <button onClick={() => setEditingReplyId(null)}>
-                              취소
-                            </button>
-                          </div>
-                        </div>
-                      ) : (
-                        <p style={{ whiteSpace: "pre-wrap" }}>{r.reply}</p>
-                      )}
-                    </div>
-                  ))
+                    ))
                 ) : (
                   <p>댓글이 없습니다.</p>
                 )}

@@ -131,8 +131,7 @@
 }
 
 .board-reply-item {
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0 0;
 }
 
 .board-content-reply-caution {
@@ -156,6 +155,14 @@
   font-weight: 400;
   margin-bottom: 16px;
   color: #999999;
+}
+
+.board-reply-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 80px;
 }
 
 .edit-content-input {
@@ -273,4 +280,12 @@
 
 .edit-reply-buttons button:last-child:hover {
   background-color: #c7c7c7;
+}
+
+.subReply-button {
+  margin-top: 32px;
+  border: none;
+  background-color: inherit;
+  font-weight: 700;
+  font-size: 12px;
 }

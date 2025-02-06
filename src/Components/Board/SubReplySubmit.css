@@ -1,0 +1,18 @@
+.subReply-textarea {
+  width: 100%;
+  min-height: 200px;
+  font-size: 16px;
+  font-family: inherit;
+  padding: 12px;
+  margin-top: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.subReply-textarea:focus {
+  border-color: #6d6aff;
+  box-shadow: 0 0 6px rgba(109, 106, 255, 0.3);
+}
