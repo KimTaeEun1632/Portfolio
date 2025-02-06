@@ -1,0 +1,12 @@
+.subReplies-wrapper {
+  margin-top: 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.subReply-item {
+  padding: 24px 0;
+}
+
+.subReply-item-wrapper {
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+}

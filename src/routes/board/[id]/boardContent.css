@@ -68,6 +68,19 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   padding: 8px;
   margin-top: 4px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.board-content-reply:focus {
+  border-color: #6d6aff;
+  box-shadow: 0 0 6px rgba(109, 106, 255, 0.3);
+}
+
+.board-reply-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .board-content-detail-footer-header {
@@ -104,6 +117,7 @@
   color: white;
   font-weight: 700;
   font-size: 14px;
+  transition: background 0.2s ease-in-out;
 }
 
 .board-content-reply-button:hover {
@@ -117,8 +131,7 @@
 }
 
 .board-reply-item {
-  padding: 24px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0 0;
 }
 
 .board-content-reply-caution {
@@ -126,9 +139,15 @@
   color: gray;
 }
 
+.board-reply-nickname-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .board-reply-nickname {
   font-size: 14px;
   font-weight: 700;
+  margin-right: 4px;
 }
 
 .board-reply-date {
@@ -136,4 +155,137 @@
   font-weight: 400;
   margin-bottom: 16px;
   color: #999999;
+}
+
+.board-reply-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+.edit-content-input {
+  width: 100%;
+  min-height: 200px;
+  font-size: 16px;
+  font-family: inherit;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.edit-content-input:focus {
+  border-color: #6d6aff;
+  box-shadow: 0 0 6px rgba(109, 106, 255, 0.3);
+}
+
+.edit-content-input::-webkit-scrollbar {
+  width: 8px;
+}
+
+.edit-content-input::-webkit-scrollbar-thumb {
+  background-color: rgba(109, 106, 255, 0.6);
+  border-radius: 4px;
+}
+
+.edit-content-input::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.edit-buttons button {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.edit-buttons button:first-child {
+  background-color: #6d6aff;
+  color: white;
+}
+
+.edit-buttons button:first-child:hover {
+  background-color: #5451cb;
+}
+
+.edit-buttons button:last-child {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.edit-buttons button:last-child:hover {
+  background-color: #c7c7c7;
+}
+
+.edit-reply-input {
+  width: 100%;
+  height: 100px;
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.edit-reply-input:focus {
+  border-color: #6d6aff;
+  box-shadow: 0 0 4px rgba(109, 106, 255, 0.3);
+}
+
+.edit-reply-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edit-reply-buttons button {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.edit-reply-buttons button:first-child {
+  background-color: #6d6aff;
+  color: white;
+}
+
+.edit-reply-buttons button:first-child:hover {
+  background-color: #5451cb;
+}
+
+.edit-reply-buttons button:last-child {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.edit-reply-buttons button:last-child:hover {
+  background-color: #c7c7c7;
+}
+
+.subReply-button {
+  margin-top: 32px;
+  border: none;
+  background-color: inherit;
+  font-weight: 700;
+  font-size: 12px;
 }
