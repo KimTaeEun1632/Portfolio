@@ -3,7 +3,7 @@ import { db } from "../../firebase";
 import {
   collection,
   doc,
-  getDocs,
+  onSnapshot,
   orderBy,
   query,
   updateDoc,
@@ -49,30 +49,25 @@ const BoardSubReply = ({ boardId, parentId, content, depth, user }) => {
   };
 
   useEffect(() => {
-    const fetchSubReplies = async () => {
-      try {
-        const subRepliesRef = collection(db, "contents", boardId, "replies");
-        const q = query(
-          subRepliesRef,
-          where("parentId", "==", parentId),
-          orderBy("createdAt", "asc")
-        );
+    const subRepliesRef = collection(db, "contents", boardId, "replies");
+    const q = query(
+      subRepliesRef,
+      where("parentId", "==", parentId),
+      orderBy("createdAt", "asc")
+    );
 
-        const querySnapshot = await getDocs(q);
-        const subReplyList = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const subReplyList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-        console.log("대댓글 데이터:", subReplyList);
-        setSubReplies(subReplyList);
-      } catch (error) {
-        console.error("대댓글 불러오기 오류:", error);
-      }
-    };
+      console.log("실시간 대댓글 데이터:", subReplyList);
+      setSubReplies(subReplyList);
+    });
 
-    fetchSubReplies();
-  }, [boardId, parentId]); // boardId나 parentId가 변경될 때만 실행
+    return () => unsubscribe();
+  }, [boardId, parentId]);
 
   return (
     <div className="subReplies-wrapper">
@@ -139,6 +134,7 @@ const BoardSubReply = ({ boardId, parentId, content, depth, user }) => {
                       boardId={boardId}
                       parentId={r.id}
                       parent={r}
+                      setOpenReplyId={setOpenReplyId}
                     />
                   )}
                   {/* 🔽 대댓글 컴포넌트 추가 */}
@@ -148,8 +144,6 @@ const BoardSubReply = ({ boardId, parentId, content, depth, user }) => {
                     boardId={boardId}
                     parentId={r.id}
                     depth={1}
-                    setOpenReplyId={setOpenReplyId}
-                    openReplyId={openReplyId}
                   />
                 </>
               )}
