@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./BoardReplyEdit.css";
-import { deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, runTransaction } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const BoardReplyEdit = ({ onEdit, boardId, replyId }) => {
@@ -12,6 +12,19 @@ const BoardReplyEdit = ({ onEdit, boardId, replyId }) => {
     try {
       const replyDocRef = doc(db, "contents", boardId, "replies", replyId);
       await deleteDoc(replyDocRef);
+
+      const boardDocRef = doc(db, "contents", boardId);
+      await runTransaction(db, async (transaction) => {
+        const boardDocSnap = await transaction.get(boardDocRef);
+
+        if (!boardDocSnap.exists()) {
+          throw new Error("게시글을 찾을 수 없습니다.");
+        }
+
+        const newReplyCount = (boardDocSnap.data().replyCount || 0) - 1;
+
+        transaction.update(boardDocRef, { replyCount: newReplyCount });
+      });
 
       alert("댓글이 삭제되었습니다.");
     } catch (error) {
