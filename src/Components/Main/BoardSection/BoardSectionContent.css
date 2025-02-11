@@ -1,0 +1,65 @@
+.board-section-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 30px 60px;
+  background-color: #f7f7f7;
+  overflow: hidden; /* 🔹 필수: 그라데이션이 올바르게 표시되도록 설정 */
+}
+
+.m-boardCard-wrapper {
+  display: flex;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px;
+  max-width: 900px;
+  white-space: nowrap; /* 🔹 줄바꿈 방지 */
+  scrollbar-width: none; /* 🔹 파이어폭스에서 스크롤바 숨김 */
+  position: relative; /* 🔹 필수: 그라데이션과 정렬을 맞추기 위해 */
+}
+
+.m-boardCard-wrapper::-webkit-scrollbar {
+  display: none; /* 🔹 크롬, 사파리에서 스크롤바 숨김 */
+}
+
+.m-boardCard-container {
+  flex: 0 0 auto; /* 🔹 카드 크기 고정 */
+  width: 300px;
+  height: 320px;
+  background: white;
+  border: 1px solid #9999;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 24px;
+  border-radius: 50%;
+  z-index: 3; /* 🔹 버튼이 그라데이션 위에 위치하도록 설정 */
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
