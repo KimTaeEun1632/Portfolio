@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import items from "../../../mock.json";
 import "./ProjectDetail.css";
 import Badge from "../../../Components/Badge/Badge";
 import Carousel from "../../../Components/Carousel/Carousel";
 
-const ProjectDetail = () => {
+const ProjectDetail = ({ items }) => {
   const { projectId } = useParams();
 
   // 스크롤 위치에 따라 버튼 표시 여부를 제어하기 위한 state

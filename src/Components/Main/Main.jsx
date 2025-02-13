@@ -2,12 +2,14 @@ import React from "react";
 import Banner from "./Banner/Banner";
 import ProjectList from "./ProjectList/ProjectList";
 import BoardSection from "./BoardSection/BoardSection";
+import About from "./About/About";
 
-const Main = ({ items }) => {
+const Main = ({ data }) => {
   return (
     <div>
       <Banner />
-      <ProjectList items={items} />
+      <About data={data.about} />
+      <ProjectList items={data.project} />
       <BoardSection />
     </div>
   );

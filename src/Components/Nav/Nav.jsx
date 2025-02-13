@@ -42,9 +42,8 @@ const Nav = () => {
         </div>
         <nav className="navButton">
           <a href="#about">About</a>
-          <a href="/board">board</a>
           <a href="#project">Projects</a>
-          <a href="#contact">Contact</a>
+          <a href="/board">board</a>
           <div onClick={handleOpenLogin}>
             {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
           </div>
@@ -60,9 +59,12 @@ const Nav = () => {
           </a>
           <nav>
             <a href="#about">About</a>
-            <a href="/board">board</a>
             <a href="#project">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="/board">board</a>
+            <div onClick={handleOpenLogin}>
+              {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
+            </div>
+            {isOpenLogin && <Login />}
           </nav>
         </div>
       </div>

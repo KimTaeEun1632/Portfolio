@@ -10,8 +10,8 @@ const BoardSection = () => {
           <div className="m-board-section-top">
             <p className="m-board-section-title">게시판</p>
             <p className="m-board-section-subTitle">
-              무한히 성장하는 개발자들의 <br />
-              이야기를 들어보세요
+              무한히 성장하는 여러분들의 <br />
+              이야기를 남겨주세요
             </p>
             <a className="m-board-section-link" href="/board">
               게시판 바로가기

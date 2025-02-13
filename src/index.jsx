@@ -5,7 +5,7 @@ import "./index.css";
 import ErrorPage from "./error-page";
 import ProjectDetail from "./routes/projectDetail/project-[projectId]";
 import Main from "./Components/Main/Main";
-import items from "./mock.json";
+import { data } from "./utils/data.";
 import Layout from "./Components/Layout/Layout";
 import Board from "./routes/board/board";
 import BoardContent from "./routes/board/[id]";
@@ -20,11 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Main items={items} />,
+        element: <Main data={data} />,
       },
       {
         path: "projectDetail/:projectId", // :projectId를 사용하여 URL 파라미터로 설정
-        element: <ProjectDetail />,
+        element: <ProjectDetail items={data.project} />,
       },
       {
         path: "board",
