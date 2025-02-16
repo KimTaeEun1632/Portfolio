@@ -1,14 +1,29 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useMemo, useRef } from "react";
 import "./AboutContent.css";
+import Animation from "../../../utils/animation";
 
 const AboutContent = ({ data }) => {
+  const refContainer = useRef(null);
+  const refCard = useRef(null);
+
+  const refs = useMemo(
+    () => ({
+      container: refContainer,
+      card: refCard,
+    }),
+    []
+  );
+
+  useEffect(() => {
+    Animation.section1(refs);
+  }, [refs]);
   return (
-    <div className="aboutContent-wrapper">
+    <div id="about" ref={refContainer} className="aboutContent-wrapper">
       <div className="aboutContent-top">
         <img className="about-img" src="/images/내사진.png" alt="김태은사진" />
       </div>
       <div className="aboutContent-foot">
-        <div className="aboutContent-foot-title">
+        <div ref={refCard} className="aboutContent-foot-title">
           <strong>
             "안녕하세요.😃
             <br />
@@ -19,12 +34,12 @@ const AboutContent = ({ data }) => {
           {data.map((item, index) => (
             <Fragment key={index}>
               <div className="aboutContent-desc-wrapper">
-                <div>
+                <div ref={refCard}>
                   <strong className="aboutContent-desc-title">
                     {item.title}
                   </strong>
                 </div>
-                <div>
+                <div ref={refCard}>
                   <p>{item.desc}</p>
                 </div>
               </div>

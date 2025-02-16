@@ -11,6 +11,7 @@ import Board from "./routes/board/board";
 import BoardContent from "./routes/board/[id]";
 import BoardLayout from "./Components/Layout/BoardLayout";
 import { AuthProvider } from "./contexts/AuthContext";
+import LenisProvider from "./contexts/LenisProvider";
 
 const router = createBrowserRouter([
   {
@@ -47,8 +48,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <LenisProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </LenisProvider>
   </React.StrictMode>
 );
