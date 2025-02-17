@@ -1,0 +1,44 @@
+.aboutContent-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.aboutContent-top {
+  width: 340px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10%;
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.aboutContent-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.aboutContent-foot-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.aboutContent-desc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+}
+
+.aboutContent-desc-title {
+  font-size: 19px;
+}

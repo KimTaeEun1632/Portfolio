@@ -1,0 +1,77 @@
+.m-board-section {
+  background-color: #f7f7f7;
+}
+
+.m-board-section-content {
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 50px 30px 60px;
+  background-color: #f7f7f7;
+}
+
+.m-board-section-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.m-board-section-title {
+  font-size: 25px;
+  font-weight: 700;
+  color: rgb(109, 106, 264);
+}
+
+.m-board-section-subTitle {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.board-section-content::before,
+.board-section-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 220px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.board-section-content::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(247, 247, 247, 1),
+    rgba(247, 247, 247, 0)
+  );
+}
+
+.board-section-content::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(247, 247, 247, 1),
+    rgba(247, 247, 247, 0)
+  );
+}
+
+.m-board-section-link {
+  display: flex;
+  width: 350px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+}

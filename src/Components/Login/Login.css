@@ -1,31 +1,40 @@
 .login-wrapper {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
   height: 30px;
+  width: 100%;
+  z-index: 99;
+}
+
+.login-form {
+  display: flex;
 }
 
 .login-input {
   width: 200px;
-  height: 40px; /* 높이를 동일하게 설정 */
-  border: 2px solid yellowgreen;
+  height: 40px;
+  border: 2px solid #6d6aff;
   color: white;
   border-radius: 10px 0px 0px 10px;
-  padding: 0 10px; /* 텍스트 여백 추가 */
+  padding: 0 10px;
 }
 
 .login-button {
-  height: 40px; /* 높이를 동일하게 설정 */
-  padding: 0 20px; /* 텍스트 여백 조정 */
-  background-color: yellowgreen;
-  border: 2px solid yellowgreen;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #6d6aff;
+  border: 2px solid #6d6aff;
   border-radius: 0px 10px 10px 0;
-  cursor: pointer; /* 클릭 가능 표시 */
+  cursor: pointer;
   font-size: 11px;
+  color: white;
+  font-weight: 600;
 }
 
 .login-button:disabled {
-  opacity: 0.7; /* 비활성화 시 시각적으로 구분 */
+  opacity: 0.7;
   cursor: not-allowed;
 }

@@ -1,0 +1,47 @@
+.about-container {
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 50px 30px 60px;
+}
+.about-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.about-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding-top: 80px;
+}
+
+.about-why {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(51 50 54 /60%);
+}
+
+.about-why-span {
+  color: rgb(51 50 54 /100%);
+}
+
+.about-reason {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.about-reason2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.about-foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

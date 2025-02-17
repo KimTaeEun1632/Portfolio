@@ -1,0 +1,62 @@
+/* Footer 기본 스타일 */
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  min-width: 400px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+}
+
+/* Footer 내부 컨테이너 */
+.footer-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 24px; /* Tailwind pb-6 = 1.5rem = 24px */
+}
+
+/* 왼쪽 영역 */
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px; /* Tailwind gap-4 = 1rem = 16px */
+}
+
+/* 오른쪽 영역 (SNS 아이콘) */
+.footer-bottom {
+  margin-top: 13px;
+  display: flex;
+  gap: 12px; /* Tailwind gap-3 = 0.75rem = 12px */
+}
+
+/* SNS 아이콘 스타일 */
+.sns-icon {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+}
+
+/* 모바일 반응형 (Tailwind mobile:flex-col) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 16px; /* Tailwind mobile:px-0 → 줄이기 */
+  }
+
+  .footer-left {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-right {
+    margin-top: 16px;
+  }
+}

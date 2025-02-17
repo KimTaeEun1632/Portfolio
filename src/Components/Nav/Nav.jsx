@@ -13,11 +13,10 @@ const Nav = () => {
       setIsOpenLogin(true);
     } else setIsOpenLogin(false);
   };
-  // 스크롤 이벤트 감지
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 72) {
-        // 72px (4.5rem에 해당) 이상 스크롤하면
         setShowNavBar2(true);
       } else {
         setShowNavBar2(false);
@@ -41,14 +40,15 @@ const Nav = () => {
           </a>
         </div>
         <nav className="navButton">
-          <a href="#about">About</a>
-          <a href="/board">board</a>
+          <a href="#aboutSection">About</a>
           <a href="#project">Projects</a>
-          <a href="#contact">Contact</a>
-          <div onClick={handleOpenLogin}>
-            {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
+          <a href="/board">board</a>
+          <div className="login-box">
+            <div onClick={handleOpenLogin}>
+              {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
+            </div>
+            {isOpenLogin && <Login />}
           </div>
-          {isOpenLogin && <Login />}
         </nav>
       </div>
 
@@ -58,13 +58,18 @@ const Nav = () => {
           <a href="/" className="logoText">
             Kim TaeEun
           </a>
-          <nav>
-            <a href="#about">About</a>
-            <a href="/board">board</a>
-            <a href="#project">Projects</a>
-            <a href="#contact">Contact</a>
-          </nav>
         </div>
+        <nav className="navButton">
+          <a href="#aboutSection">About</a>
+          <a href="#project">Projects</a>
+          <a href="/board">board</a>
+          <div className="login-box">
+            <div onClick={handleOpenLogin}>
+              {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
+            </div>
+            {isOpenLogin && <Login />}
+          </div>
+        </nav>
       </div>
     </div>
   );
