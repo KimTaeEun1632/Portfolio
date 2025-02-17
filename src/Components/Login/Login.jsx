@@ -57,7 +57,7 @@ const Login = () => {
         </>
       ) : (
         <div className="login-wrapper">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="login-form">
             <input
               className="login-input"
               type="text"

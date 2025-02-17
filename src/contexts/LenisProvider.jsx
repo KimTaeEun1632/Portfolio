@@ -7,7 +7,7 @@ const LenisProvider = ({ children }) => {
       duration: 1.8,
       smooth: true,
       easing: (t) => 1 - Math.pow(1 - t, 3),
-      lerp: 0.05,
+      lerp: 0.07,
     });
 
     const raf = (time) => {

@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 50px 30px 60px;
   background-color: #f7f7f7;
-  overflow: hidden; /* 🔹 필수: 그라데이션이 올바르게 표시되도록 설정 */
+  overflow: hidden;
 }
 
 .m-boardCard-wrapper {
@@ -18,17 +18,17 @@
   gap: 20px;
   padding: 20px;
   max-width: 900px;
-  white-space: nowrap; /* 🔹 줄바꿈 방지 */
-  scrollbar-width: none; /* 🔹 파이어폭스에서 스크롤바 숨김 */
-  position: relative; /* 🔹 필수: 그라데이션과 정렬을 맞추기 위해 */
+  white-space: nowrap;
+  scrollbar-width: none;
+  position: relative;
 }
 
 .m-boardCard-wrapper::-webkit-scrollbar {
-  display: none; /* 🔹 크롬, 사파리에서 스크롤바 숨김 */
+  display: none;
 }
 
 .m-boardCard-container {
-  flex: 0 0 auto; /* 🔹 카드 크기 고정 */
+  flex: 0 0 auto;
   width: 300px;
   height: 320px;
   background: white;
@@ -53,7 +53,7 @@
   padding: 10px 15px;
   font-size: 24px;
   border-radius: 50%;
-  z-index: 3; /* 🔹 버튼이 그라데이션 위에 위치하도록 설정 */
+  z-index: 3;
 }
 
 .carousel-button.left {

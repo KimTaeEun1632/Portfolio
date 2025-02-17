@@ -31,17 +31,28 @@ const BoardSectionContent = () => {
     return () => unsubscribe();
   }, []);
 
-  // 🔹 오른쪽 버튼 클릭 시 스크롤 이동
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 400, behavior: "smooth" });
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+
+      if (scrollLeft + clientWidth >= scrollWidth - 5) {
+        carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        carouselRef.current.scrollBy({ left: 400, behavior: "smooth" });
+      }
     }
   };
 
-  // 🔹 왼쪽 버튼 클릭 시 스크롤 이동
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -400, behavior: "smooth" });
+      if (carouselRef.current.scrollLeft <= 0) {
+        carouselRef.current.scrollTo({
+          left: carouselRef.current.scrollWidth,
+          behavior: "smooth",
+        });
+      } else {
+        carouselRef.current.scrollBy({ left: -400, behavior: "smooth" });
+      }
     }
   };
 

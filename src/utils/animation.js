@@ -101,6 +101,56 @@ class Animation {
             scrub: true,
             start: "top 100%",
             end: "bottom 80%",
+          },
+        }
+      );
+    });
+  }
+
+  static section3(target) {
+    const section = gsap.utils.toArray("#board .m-board-section-top");
+
+    section.forEach((e, i) => {
+      gsap.fromTo(
+        e,
+        {
+          y: 50,
+          opacity: 0,
+        },
+        {
+          y: 0,
+          delay: 0.2,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: e,
+            start: "top 85%",
+            end: "top 60%",
+          },
+        }
+      );
+    });
+
+    const content = gsap.utils.toArray("#board .m-board-section-content-box");
+
+    content.forEach((e, i) => {
+      gsap.fromTo(
+        e,
+        {
+          opacity: 0,
+          y: 80,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          delay: 0.4,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: e,
+            start: "top 85%",
+            end: "top 60%",
             markers: true,
           },
         }

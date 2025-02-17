@@ -4,7 +4,7 @@ import AboutContent from "./AboutContent";
 
 const About = ({ data }) => {
   return (
-    <div className="about-section">
+    <div id="aboutSection" className="about-section">
       <div className="about-container">
         <div className="about-wrapper">
           <div className="about-top">

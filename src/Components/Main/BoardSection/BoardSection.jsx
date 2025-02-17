@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import "./BoardSection.css";
 import BoardSectionContent from "./BoardSectionContent";
+import Animation from "../../../utils/animation";
 
 const BoardSection = () => {
+  const refContainer = useRef(null);
+
+  const refs = useMemo(
+    () => ({
+      container: refContainer,
+    }),
+    []
+  );
+
+  useEffect(() => {
+    Animation.section3(refs);
+  }, [refs]);
+
   return (
-    <div className="m-board-section">
+    <div id="board" refs={refContainer} className="m-board-section">
       <div className="m-board-section-content">
         <div className="m-board-section-wrapper">
           <div className="m-board-section-top">
@@ -17,7 +31,7 @@ const BoardSection = () => {
               게시판 바로가기
             </a>
           </div>
-          <div>
+          <div refs={refContainer} className="m-board-section-content-box">
             <BoardSectionContent />
           </div>
         </div>

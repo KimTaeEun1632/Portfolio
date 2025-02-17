@@ -36,9 +36,9 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 220px; /* 🔹 그라데이션 너비 조절 */
-  z-index: 2; /* 🔹 버튼보다 아래, 카드보다 위 */
-  pointer-events: none; /* 🔹 클릭 방지 */
+  width: 220px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .board-section-content::before {
@@ -50,7 +50,6 @@
   );
 }
 
-/* 🔹 오른쪽 그라데이션 */
 .board-section-content::after {
   right: 0;
   background: linear-gradient(
