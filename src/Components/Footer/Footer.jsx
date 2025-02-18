@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-top">
-          <p>REACT, GSAP로 만들어진 사이트 입니다.</p>
+          <p>REACT, GSAP, FIREBASE 로 만들어진 사이트 입니다.</p>
           <p>© 2024 KIM TAE EUN. All Rights Reserved.</p>
         </div>
         <div className="footer-bottom">

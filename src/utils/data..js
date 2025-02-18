@@ -189,12 +189,53 @@ export const data = {
     },
     {
       id: 4,
+      title: "Portfolio",
+      subtitle: "포트폴리오",
+      projectType: "personal",
+      date: "00.00.00 ~ 00. 00. 00",
+      description:
+        "개인 포트폴리오 사이트 제작, React 기본기 연습과 React router v6, Firebase, GSAP 의 사용법을 배우고자 해당 기술 들을 사용하였습니다.",
+      technologies: ["React, GSAP, Firebase"],
+      imgUrl: "/images/포폴1.png",
+      links: {
+        github: "https://github.com/KimTaeEun1632/Portfolio",
+        notion:
+          "https://www.notion.so/Portfolio-16b429a3f7728049ae3ccee6701201f2",
+      },
+      reasonForTechChoice: [
+        "React : 리액트의 기본기를 더 연습하고자 채택했습니다.",
+        "React router v6: 기존 배원던 v5대신 v6를 연습하고자 채택하였습니다.",
+        "Firebase : 서버를 활용하여 게시판 기능을 만들고자 채택하였습니다.",
+        "GSAP : 인터렉티브한 사이트를 만들기 위해 채택하였습니다.",
+      ],
+      slides: [
+        {
+          src: "/images/포트폴리오1.png",
+          alt: "글로벌노마드 이미지1",
+        },
+        {
+          src: "/images/포트폴리오2.png",
+          alt: "글로벌노마드 이미지2",
+        },
+        {
+          src: "/images/포트폴리오3.png",
+          alt: "글로벌노마드 이미지3",
+        },
+      ],
+      retrospect: [
+        "동영상을 넣고 싶어 직접 동영상을 만들면서 편집에 대해서도 배우고, video속성에 대해 공부를 할 수 있었으며 인터렉티브한 사이트를 위해 GSAP에 대해 공부하고 사용해보며 UX/UI 역량을 기를 수 있었습니다.",
+        "React 최신버전을 공부하면서 라우팅에 대해 많이 배울 수 있었습니다. react-router-dom v6버전을 적용하면서 동작원리와 빠르게 변하는 React에 대해 더 공부 할 수 있었습니다. 또한, 캐러샐 라이브러리 없이 캐러샐을 구현하면서 Vanilla.js에도 조금 익숙해 질 수 있었습니다.",
+        "게시판 기능을 구현하기 위해 Firebase를 활용하며 실시간 데이터베이스, 인증, 저장소 등의 기능을 익혔습니다. Firebase의 장점인 백엔드 구축 없이도 빠르게 기능을 개발할 수 있다는 점을 직접 경험하며, NoSQL 데이터 구조와 Firestore의 쿼리 방식에 대해 깊이 이해할 수 있었습니다.",
+      ],
+    },
+    {
+      id: 5,
       title: "personal project",
       subtitle: "개인 프로젝트",
       projectType: "personal",
       date: "00.00.00 ~ 00. 00. 00",
-      description: "This is a project about...",
-      technologies: ["React", "Node.js", "MongoDB"],
+      description: "AI 오픈소스를 이용한 개인 프로젝트 입니다.",
+      technologies: [],
       imgUrl: "/images/하이재킹.jpg",
       links: {
         github: "https://github.com/Team18-The-Julge/The-Julge",
@@ -219,49 +260,7 @@ export const data = {
           alt: "글로벌노마드 이미지4",
         },
       ],
-      retrospect: [
-        "처음 Next.js 와 Typescript를 사용한 프로젝트 입니다. 그 전에 Next와 Typescript를 처음배우고 리액트 프로젝트를 Typescript로 마이그레이션 하는 과정에서 어려움이 있어서 프로젝트를 시작하기 전 많은 두려움이 있었습니다. 프로젝트를 진행하며 하나하나 Type을 지정하고 Next의 장점을 사용하다 보니 React와 다른 매력을 느끼게 되었습니다.",
-        "특히, Next.js의 파일 시스템 기반의 간편한 페이지 라우팅과, SSG, SSR이라는 강력한 기능을 더 깊게 배울 수 있는 계기가 되었고, SCSS를 사용하여 CSS 코드의 재사용성과 계층 구조로 되어 있어 가독성에서 장점을 느낄 수 있었고 모듈화를 통해 공통CSS를 한번에 관리할 수 있었습니다.",
-        "처음 프로젝트와 달리, 이번 프로젝트에서는 공통 컴포넌트를 설계하고 만드는 시간을 가졌습니다. 공통 컴포넌트를 설계하는 과정에서 어떤 기능과 스타일을 가져야 할지를 신중히 고려하며, 컴포넌트를 재사용 가능한 형태로 설계하는 것의 중요성을 배웠습니다. 특히, 사용자 유형(type)에 따라 적절한 데이터를 보여줄 수 있도록 Props를 설계하고 관리하는 방법을 깊이 이해하게 되었습니다.",
-      ],
-    },
-    {
-      id: 5,
-      title: "Portfolio",
-      subtitle: "포트폴리오",
-      projectType: "personal",
-      date: "00.00.00 ~ 00. 00. 00",
-      description:
-        "개인 포트폴리오 사이트 제작, React 기본기 연습과 React router v6를 연습하기 위한 프로젝트 입니다.",
-      technologies: ["React"],
-      imgUrl: "/images/핸섬가이즈.jpg",
-      links: {
-        github: "https://github.com/KimTaeEun1632/Portfolio",
-        notion:
-          "https://www.notion.so/Portfolio-16b429a3f7728049ae3ccee6701201f2",
-      },
-      reasonForTechChoice: [
-        "React : 리액트의 기본기를 더 연습하고자 채택했습니다.",
-        "React router v6: 기존 배원던 v5대신 v6를 연습하고자 채택하였습니다.",
-      ],
-      slides: [
-        {
-          src: "/images/포트폴리오1.png",
-          alt: "글로벌노마드 이미지1",
-        },
-        {
-          src: "/images/포트폴리오2.png",
-          alt: "글로벌노마드 이미지2",
-        },
-        {
-          src: "/images/포트폴리오3.png",
-          alt: "글로벌노마드 이미지3",
-        },
-      ],
-      retrospect: [
-        "실제 사용하는 사이트와 비슷하게 만들고 싶었습니다. 영화사이트를 참고하여 포트폴리오는 만들었습니다. 동영상을 넣고 싶어 직접 동영상을 만들면서 편집에 대해서도 배우고, video속성에 대해 공부를 할 수 있었으며 UX/UI 역량을 기를 수 있었습니다.",
-        "React 최신버전을 공부하면서 라우팅에 대해 많이 배울 수 있었습니다. react-router-dom v6버전을 적용하면서 동작원리와 빠르게 변하는 React에 대해 더 공부 할 수 있었습니다. 또한, 캐러샐 라이브러리 없이 캐러샐을 구현하면서 Vanilla.js에도 조금 익숙해 질 수 있었습니다.",
-      ],
+      retrospect: [],
     },
   ],
 };

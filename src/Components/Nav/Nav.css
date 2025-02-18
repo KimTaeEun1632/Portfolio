@@ -67,3 +67,112 @@ a {
 .login-box {
   position: relative;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+CU&display=swap");
+
+.navBar {
+  width: 100%;
+  height: 4.5rem;
+  max-width: 71.25rem;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 100;
+  background-color: white;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.navBar.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 200;
+}
+
+.logoText {
+  font-family: "Playwrite CU";
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navBarFixed {
+  width: 100%;
+  height: 3.5rem;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 400px;
+  align-items: center;
+  color: white;
+  position: fixed;
+  top: 0;
+  background-color: rgb(109, 106, 264);
+  z-index: 100;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.navBarFixed.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.navBox {
+  border-bottom: solid 2px rgb(109, 106, 264);
+}
+
+.login-box {
+  position: relative;
+}
+
+/* ✅ 반응형 스타일 */
+
+/* 📱 Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .navBar {
+    height: 3.5rem;
+    padding: 1rem;
+  }
+
+  .navButton {
+    gap: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .navBarFixed {
+    height: 3rem;
+    padding: 1rem;
+    gap: 100px;
+  }
+}
+
+/* 📟 Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .navBar {
+    height: 4rem;
+    padding: 1.25rem;
+  }
+
+  .navButton {
+    gap: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .navBarFixed {
+    height: 3.2rem;
+    gap: 200px;
+  }
+}

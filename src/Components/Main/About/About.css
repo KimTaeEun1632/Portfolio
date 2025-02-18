@@ -45,3 +45,61 @@
   justify-content: center;
   align-items: center;
 }
+
+/* 📱 Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .about-container {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .about-wrapper {
+    gap: 40px; /* 간격 축소 */
+  }
+
+  .about-top {
+    padding-top: 40px;
+    gap: 10px;
+  }
+
+  .about-why {
+    font-size: 16px; /* 폰트 크기 축소 */
+  }
+
+  .about-reason {
+    font-size: 20px; /* 폰트 크기 축소 */
+  }
+
+  .about-reason2 {
+    font-size: 28px; /* 폰트 크기 축소 */
+  }
+}
+
+/* 📟 Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .about-container {
+    width: 90%;
+    padding: 40px 30px;
+  }
+
+  .about-wrapper {
+    gap: 50px;
+  }
+
+  .about-top {
+    padding-top: 60px;
+    gap: 12px;
+  }
+
+  .about-why {
+    font-size: 18px;
+  }
+
+  .about-reason {
+    font-size: 22px;
+  }
+
+  .about-reason2 {
+    font-size: 35px;
+  }
+}

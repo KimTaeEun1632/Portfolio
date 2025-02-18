@@ -42,3 +42,49 @@
 .aboutContent-desc-title {
   font-size: 19px;
 }
+
+/* 📱 Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .aboutContent-wrapper {
+    flex-direction: column; /* 이미지가 위로 오도록 변경 */
+    align-items: center;
+  }
+
+  .aboutContent-top {
+    width: 230px; /* 이미지 크기 조정 */
+    height: 240px;
+  }
+
+  .aboutContent-foot {
+    width: 100%;
+    text-align: center; /* 텍스트 중앙 정렬 */
+  }
+
+  .aboutContent-foot-title {
+    font-size: 18px; /* 폰트 크기 조정 */
+  }
+
+  .aboutContent-desc-title {
+    font-size: 17px; /* 폰트 크기 조정 */
+  }
+}
+
+/* 📟 Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .aboutContent-wrapper {
+    gap: 40px;
+  }
+
+  .aboutContent-top {
+    width: 320px;
+    height: 330px;
+  }
+
+  .aboutContent-foot-title {
+    font-size: 19px;
+  }
+
+  .aboutContent-desc-title {
+    font-size: 18px;
+  }
+}

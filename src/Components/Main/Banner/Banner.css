@@ -93,3 +93,71 @@
   height: 18px;
   object-fit: cover;
 }
+
+/* ✅ 반응형 스타일 */
+
+/* 📱 Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .mainContainer {
+    height: 320px; /* 높이 축소 */
+  }
+
+  .content {
+    width: 100%;
+    padding: 0 20px; /* 좌우 여백 추가 */
+  }
+
+  .title {
+    top: 200px;
+    font-size: 22px; /* 폰트 크기 축소 */
+  }
+
+  .subTitle {
+    top: 240px;
+    font-size: 16px; /* 폰트 크기 축소 */
+  }
+
+  .videoButton {
+    top: 270px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .playButton {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* 📟 Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .mainContainer {
+    height: 420px;
+  }
+
+  .content {
+    width: 90%;
+    padding: 0 40px;
+  }
+
+  .title {
+    top: 300px;
+    font-size: 26px;
+  }
+
+  .subTitle {
+    top: 350px;
+    font-size: 18px;
+  }
+
+  .videoButton {
+    top: 380px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .playButton {
+    width: 17px;
+    height: 17px;
+  }
+}
