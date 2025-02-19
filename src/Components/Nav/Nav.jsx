@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Nav.css";
 import Login from "../Login/Login";
 import { useAuth } from "../../contexts/AuthContext";
+import ProjectListDropdown from "./ProjectListDropdown";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [showNavBar2, setShowNavBar2] = useState(false);
   const [isOpenLogin, setIsOpenLogin] = useState(false);
-  const { isLoggedIn } = useAuth();
+  const [isOpenProjectList, setIsOpenProjectList] = useState(false);
 
-  const handleOpenLogin = () => {
-    if (isOpenLogin === false) {
-      setIsOpenLogin(true);
-    } else setIsOpenLogin(false);
-  };
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,16 +33,25 @@ const Nav = () => {
       {/* navBar1: 기본 네비게이션 바 */}
       <div className={`navBar ${showNavBar2 ? "hidden" : ""}`}>
         <div>
-          <a href="/" className="logoText">
+          <Link to="/" className="logoText">
             Kim TaeEun
-          </a>
+          </Link>
         </div>
+
         <nav className="navButton">
-          <a href="#aboutSection">About</a>
-          <a href="#project">Projects</a>
-          <a href="/board">board</a>
+          <Link to="#aboutSection">About</Link>
+
+          <div className="projects-links-box">
+            <p onClick={() => setIsOpenProjectList(!isOpenProjectList)}>
+              Projects
+            </p>
+            {isOpenProjectList && <ProjectListDropdown />}
+          </div>
+
+          <Link to="/board">board</Link>
+
           <div className="login-box">
-            <div onClick={handleOpenLogin}>
+            <div onClick={() => setIsOpenLogin(!isOpenLogin)}>
               {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
             </div>
             {isOpenLogin && (
@@ -64,11 +71,19 @@ const Nav = () => {
           </a>
         </div>
         <nav className="navButton">
-          <a href="#aboutSection">About</a>
-          <a href="#project">Projects</a>
-          <a href="/board">board</a>
+          <Link to="#aboutSection">About</Link>
+
+          <div className="projects-links-box">
+            <p onClick={() => setIsOpenProjectList(!isOpenProjectList)}>
+              Projects
+            </p>
+            {isOpenProjectList && <ProjectListDropdown />}
+          </div>
+
+          <Link to="/board">board</Link>
+
           <div className="login-box">
-            <div onClick={handleOpenLogin}>
+            <div onClick={() => setIsOpenLogin(!isOpenLogin)}>
               {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
             </div>
             {isOpenLogin && (

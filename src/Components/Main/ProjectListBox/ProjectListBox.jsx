@@ -8,7 +8,7 @@ const ProjectListData = ({ item }) => {
       <img src={item.imgUrl} alt="이미지1" />
       <div className="project-detail-button">
         <Link
-          to={`/projectDetail/${item.id}#project-${item.id}`} // URL에 projectId 포함
+          to={`/projectDetail/${item.id}#${item.subtitle}`} // URL에 projectId 포함
           className="detail-button-hover"
         >
           상세보기

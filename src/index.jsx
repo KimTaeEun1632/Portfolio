@@ -5,7 +5,7 @@ import "./index.css";
 import ErrorPage from "./error-page";
 import ProjectDetail from "./routes/projectDetail/project-[projectId]";
 import Main from "./Components/Main/Main";
-import { data } from "./utils/data.";
+import { data } from "./utils/data";
 import Layout from "./Components/Layout/Layout";
 import Board from "./routes/board/board";
 import BoardContent from "./routes/board/[id]";
