@@ -42,3 +42,49 @@
 .aboutContent-desc-title {
   font-size: 19px;
 }
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .aboutContent-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutContent-top {
+    width: 230px;
+    height: 240px;
+  }
+
+  .aboutContent-foot {
+    width: 100%;
+    text-align: center;
+  }
+
+  .aboutContent-foot-title {
+    font-size: 18px;
+  }
+
+  .aboutContent-desc-title {
+    font-size: 17px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .aboutContent-wrapper {
+    gap: 40px;
+  }
+
+  .aboutContent-top {
+    width: 320px;
+    height: 330px;
+  }
+
+  .aboutContent-foot-title {
+    font-size: 19px;
+  }
+
+  .aboutContent-desc-title {
+    font-size: 18px;
+  }
+}

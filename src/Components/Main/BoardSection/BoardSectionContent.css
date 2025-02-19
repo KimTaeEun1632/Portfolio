@@ -63,3 +63,19 @@
 .carousel-button.right {
   right: 10px;
 }
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .m-boardCard-container {
+    width: 200px;
+    font-size: 12px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .m-boardCard-container {
+    width: 250px;
+    font-size: 14px;
+  }
+}

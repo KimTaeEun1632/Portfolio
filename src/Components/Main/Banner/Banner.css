@@ -3,14 +3,14 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 1; /* z-index 조정 */
+  z-index: 1;
 }
 
 .videoPlay {
-  position: absolute; /* absolute로 비디오 위치 고정 */
+  position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 0; /* z-index 낮춤 */
+  z-index: 0;
   object-fit: cover;
   overflow: hidden;
 }
@@ -42,7 +42,7 @@
     rgba(0, 0, 0, 0.25) 75%,
     #000 100%
   );
-  z-index: 2; /* 배경 그라데이션을 비디오 위에 표시 */
+  z-index: 2;
 }
 .title {
   position: absolute;
@@ -77,8 +77,8 @@
   background-color: black;
   border: 1px solid #ffffff;
   border-radius: 50%;
-  display: flex; /* 이미지 정렬을 위해 flex 사용 */
-  align-items: center; /* 세로 중앙 정렬 */
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -92,4 +92,72 @@
   width: 18px;
   height: 18px;
   object-fit: cover;
+}
+
+/* 반응형 스타일 */
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .mainContainer {
+    height: 320px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .title {
+    top: 200px;
+    font-size: 22px;
+  }
+
+  .subTitle {
+    top: 240px;
+    font-size: 16px;
+  }
+
+  .videoButton {
+    top: 270px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .playButton {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .mainContainer {
+    height: 420px;
+  }
+
+  .content {
+    width: 90%;
+    padding: 0 40px;
+  }
+
+  .title {
+    top: 300px;
+    font-size: 26px;
+  }
+
+  .subTitle {
+    top: 350px;
+    font-size: 18px;
+  }
+
+  .videoButton {
+    top: 380px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .playButton {
+    width: 17px;
+    height: 17px;
+  }
 }

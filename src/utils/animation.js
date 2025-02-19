@@ -151,7 +151,6 @@ class Animation {
             trigger: e,
             start: "top 85%",
             end: "top 60%",
-            markers: true,
           },
         }
       );

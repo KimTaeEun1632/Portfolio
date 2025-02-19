@@ -10,7 +10,7 @@ const Board = () => {
 
   const handleOpenModal = (event) => {
     event.preventDefault();
-    if (isLoading) return; // 로딩 중에는 아무 작업도 하지 않음
+    if (isLoading) return;
     if (!isLoggedIn) {
       alert("로그인이 필요합니다.");
       return;
@@ -19,7 +19,7 @@ const Board = () => {
   };
 
   if (isLoading) {
-    return <p>로딩 중...</p>; // 인증 상태 확인 중일 때 로딩 화면 표시
+    return <p>로딩 중...</p>;
   }
 
   return (

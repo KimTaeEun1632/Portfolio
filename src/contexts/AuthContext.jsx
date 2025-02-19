@@ -7,7 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [nickname, setNickname] = useState("");
-  const [isLoading, setIsLoading] = useState(true); // 초기 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Firebase 인증 상태 확인
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
         setNickname("");
       }
-      setIsLoading(false); // 로딩 완료
+      setIsLoading(false);
     });
     return () => unsubscribe();
   }, []);
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn,
         nickname,
         setNickname,
-        isLoading, // 로딩 상태를 제공
+        isLoading,
       }}
     >
       {children}

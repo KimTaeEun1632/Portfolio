@@ -27,3 +27,29 @@
   justify-items: center;
   background-color: white;
 }
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .project-list-content {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .project-list-title {
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .project-list-content {
+    width: 90%;
+    padding: 40px 30px;
+  }
+
+  .project-list-title {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+}
