@@ -22,7 +22,7 @@ class Animation {
             trigger: e,
             scrub: true,
             start: "bottom 120%",
-            end: "top 80%",
+            end: "top 60%",
           },
         }
       );
@@ -47,7 +47,6 @@ class Animation {
             scrub: true,
             start: "bottom 120%",
             end: "top 60%",
-            markers: true,
           },
         }
       );

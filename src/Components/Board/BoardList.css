@@ -128,3 +128,98 @@
 .board-dropdown-button {
   position: absolute;
 }
+
+/* 반응형 스타일 */
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .board-list-wrapper {
+    padding: 15px;
+    margin-top: 10px;
+  }
+
+  .board-list-header {
+    justify-content: space-between;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .board-list-body {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+
+  .board-list-link {
+    font-size: 14px;
+  }
+
+  .board-footer img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .board-nickname {
+    font-size: 12px;
+    margin-left: 3px;
+    margin-right: 8px;
+  }
+
+  .board-info {
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  .board-dropdown-wrapper {
+    width: 80px;
+    gap: 5px;
+  }
+
+  .board-dropdown-button {
+    width: 90px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .board-list-wrapper {
+    padding: 18px;
+    margin-top: 15px;
+  }
+
+  .board-list-header {
+    height: 30px;
+  }
+
+  .board-list-body {
+    font-size: 15px;
+  }
+
+  .board-list-link {
+    font-size: 15px;
+  }
+
+  .board-footer img {
+    width: 19px;
+    height: 19px;
+  }
+
+  .board-nickname {
+    font-size: 13px;
+    margin-left: 4px;
+    margin-right: 12px;
+  }
+
+  .board-info {
+    font-size: 13px;
+    margin-left: 12px;
+  }
+
+  .board-dropdown-wrapper {
+    width: 90px;
+    gap: 8px;
+  }
+
+  .board-dropdown-button {
+    width: 100px;
+  }
+}

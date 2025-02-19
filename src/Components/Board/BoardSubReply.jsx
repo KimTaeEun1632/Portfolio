@@ -62,7 +62,6 @@ const BoardSubReply = ({ boardId, parentId, content, depth, user }) => {
         ...doc.data(),
       }));
 
-      console.log("실시간 대댓글 데이터:", subReplyList);
       setSubReplies(subReplyList);
     });
 

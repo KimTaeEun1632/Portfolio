@@ -138,13 +138,28 @@ a {
   position: relative;
 }
 
-/* ✅ 반응형 스타일 */
+.login-dropdown {
+  position: absolute;
+  top: 165%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  z-index: 100;
+}
 
-/* 📱 Mobile (최대 768px) */
+/* 반응형 스타일 */
+
+/* Mobile (최대 768px) */
 @media (max-width: 768px) {
   .navBar {
     height: 3.5rem;
     padding: 1rem;
+    font-size: 12px;
   }
 
   .navButton {
@@ -156,14 +171,22 @@ a {
     height: 3rem;
     padding: 1rem;
     gap: 100px;
+    font-size: 12px;
+  }
+
+  .login-dropdown {
+    width: 120px;
+    padding: 12px;
+    left: 0;
   }
 }
 
-/* 📟 Tablet (769px ~ 1200px) */
+/* Tablet (769px ~ 1200px) */
 @media (min-width: 769px) and (max-width: 1200px) {
   .navBar {
     height: 4rem;
     padding: 1.25rem;
+    font-size: 14px;
   }
 
   .navButton {
@@ -174,5 +197,12 @@ a {
   .navBarFixed {
     height: 3.2rem;
     gap: 200px;
+    font-size: 14px;
+  }
+
+  .login-dropdown {
+    width: 160px;
+    padding: 14px;
+    left: 0;
   }
 }

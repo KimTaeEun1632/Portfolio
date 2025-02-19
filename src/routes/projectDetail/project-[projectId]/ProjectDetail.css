@@ -55,10 +55,10 @@
 
 .project-links {
   display: flex;
-  justify-content: center; /* 중앙 정렬을 원할 경우 */
-  gap: 1rem; /* 아이템 사이의 간격 설정 */
+  justify-content: center;
+  gap: 1rem;
   list-style-type: none;
-  padding: 0; /* 기본 패딩 제거 */
+  padding: 0;
 }
 
 .project-link {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signInAnonymously, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
@@ -19,6 +19,7 @@ const Login = () => {
         displayName: nickname,
       });
       setIsLoggedIn(true);
+      setNickname(credentials.user.displayName);
     } catch (e) {
       console.log(e.message);
       setIsLoggedIn(false);
@@ -39,22 +40,32 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    if (auth.currentUser) {
+      setNickname(auth.currentUser.displayName || "");
+    }
+  }, [isLoggedIn, setNickname]);
+
   if (isLoading) {
-    // 인증 상태 확인 중 로딩 화면
     return <p>로딩 중...</p>;
   }
 
   return (
     <>
       {isLoggedIn ? (
-        <>
+        <div className="logout-wrapper">
+          <p className="nickname-display">
+            '{nickname}'님,
+            <br /> 안녕하세요.
+          </p>
           <form onSubmit={handleLogout}>
             <input
+              className="logout-input"
               type="submit"
               value={isLoadingSubmit ? "Loading..." : "로그아웃"}
             />
           </form>
-        </>
+        </div>
       ) : (
         <div className="login-wrapper">
           <form onSubmit={handleSubmit} className="login-form">

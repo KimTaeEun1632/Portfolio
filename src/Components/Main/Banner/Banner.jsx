@@ -2,18 +2,17 @@ import React, { useRef, useState } from "react";
 import "./Banner.css";
 
 const Banner = () => {
-  const [isPlaying, setIsPlaying] = useState(true); // 재생 여부를 상태로 관리
-  const videoRef = useRef(null); // video 요소에 접근하기 위한 ref
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
 
-  // 재생/일시정지 토글 함수
   const handlePlayPause = () => {
     const video = videoRef.current;
     if (isPlaying) {
-      video.pause(); // 일시정지
+      video.pause();
     } else {
-      video.play(); // 재생
+      video.play();
     }
-    setIsPlaying(!isPlaying); // 재생 상태 업데이트
+    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -30,8 +29,6 @@ const Banner = () => {
           ></video>
           <h1 className="title">FE developer 김태은</h1>
           <span className="subTitle">Email: qpwoal1324@naver.com</span>
-
-          {/* 버튼에 이벤트 핸들러 연결 */}
           <button className="videoButton" onClick={handlePlayPause}>
             {isPlaying ? (
               <img

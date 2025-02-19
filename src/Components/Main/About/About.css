@@ -46,7 +46,7 @@
   align-items: center;
 }
 
-/* 📱 Mobile (최대 768px) */
+/* Mobile (최대 768px) */
 @media (max-width: 768px) {
   .about-container {
     width: 100%;
@@ -54,7 +54,7 @@
   }
 
   .about-wrapper {
-    gap: 40px; /* 간격 축소 */
+    gap: 0;
   }
 
   .about-top {
@@ -63,19 +63,19 @@
   }
 
   .about-why {
-    font-size: 16px; /* 폰트 크기 축소 */
+    font-size: 16px;
   }
 
   .about-reason {
-    font-size: 20px; /* 폰트 크기 축소 */
+    font-size: 20px;
   }
 
   .about-reason2 {
-    font-size: 28px; /* 폰트 크기 축소 */
+    font-size: 28px;
   }
 }
 
-/* 📟 Tablet (769px ~ 1200px) */
+/* Tablet (769px ~ 1200px) */
 @media (min-width: 769px) and (max-width: 1200px) {
   .about-container {
     width: 90%;

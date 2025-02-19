@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Footer.css"; // CSS 파일 불러오기
+import "./Footer.css";
 
 const snsSection = [
   {

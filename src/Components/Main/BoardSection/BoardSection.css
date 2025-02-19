@@ -76,37 +76,37 @@
   font-size: 18px;
 }
 
-/* ✅ 반응형 스타일 */
+/* 반응형 스타일 */
 
-/* 📱 Mobile (최대 768px) */
+/* Mobile (최대 768px) */
 @media (max-width: 768px) {
   .m-board-section-content {
     width: 100%;
-    padding: 40px 20px; /* 좌우 여백 추가 */
+    padding: 40px 20px;
   }
 
   .m-board-section-title {
-    font-size: 20px; /* 폰트 크기 축소 */
+    font-size: 20px;
   }
 
   .m-board-section-subTitle {
-    font-size: 32px; /* 폰트 크기 축소 */
+    font-size: 32px;
   }
 
   .m-board-section-link {
-    width: 100%; /* 버튼 전체 너비 */
-    max-width: 280px; /* 최대 너비 제한 */
-    font-size: 16px; /* 폰트 크기 축소 */
-    padding: 12px 16px; /* 버튼 크기 축소 */
+    width: 100%;
+    max-width: 280px;
+    font-size: 16px;
+    padding: 12px 16px;
   }
 
   .board-section-content::before,
   .board-section-content::after {
-    width: 100px; /* 그라데이션 너비 축소 */
+    width: 100px;
   }
 }
 
-/* 📟 Tablet (769px ~ 1200px) */
+/* Tablet (769px ~ 1200px) */
 @media (min-width: 769px) and (max-width: 1200px) {
   .m-board-section-content {
     width: 90%;

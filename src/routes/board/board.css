@@ -43,3 +43,52 @@
   background-color: rgb(84, 81, 203);
   cursor: pointer;
 }
+
+/* 반응형 스타일 */
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .board-page {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .board-title-wrapper {
+    height: 60px;
+    padding: 0 16px;
+  }
+
+  .board-title {
+    font-size: 16px;
+  }
+
+  .board-write-button {
+    width: 80px;
+    height: 35px;
+    font-size: 12px;
+    gap: 5px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .board-page {
+    width: 90%;
+  }
+
+  .board-title-wrapper {
+    height: 70px;
+    padding: 0 18px;
+  }
+
+  .board-title {
+    font-size: 18px;
+  }
+
+  .board-write-button {
+    width: 90px;
+    height: 38px;
+    font-size: 13px;
+    gap: 6px;
+  }
+}

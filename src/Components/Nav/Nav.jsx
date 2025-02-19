@@ -47,7 +47,11 @@ const Nav = () => {
             <div onClick={handleOpenLogin}>
               {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
             </div>
-            {isOpenLogin && <Login />}
+            {isOpenLogin && (
+              <div className="login-dropdown">
+                <Login />
+              </div>
+            )}
           </div>
         </nav>
       </div>
@@ -67,7 +71,11 @@ const Nav = () => {
             <div onClick={handleOpenLogin}>
               {isLoggedIn ? <p>Logout</p> : <p>Login</p>}
             </div>
-            {isOpenLogin && <Login />}
+            {isOpenLogin && (
+              <div className="login-dropdown">
+                <Login />
+              </div>
+            )}
           </div>
         </nav>
       </div>
