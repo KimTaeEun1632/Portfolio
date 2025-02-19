@@ -128,3 +128,94 @@
   flex-direction: column;
   gap: 20px;
 }
+
+/* 반응형 스타일 */
+
+/* Mobile (최대 768px) */
+@media (max-width: 768px) {
+  .projects-detail-page {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .project-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-summation-section {
+    flex-direction: column;
+  }
+
+  .project-text-section {
+    width: 100%;
+  }
+
+  .project-image-wrapper {
+    height: auto;
+  }
+
+  .project-image {
+    max-width: 100%;
+  }
+
+  .project-link {
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  .fixBtnWrap {
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
+    width: 50px;
+    height: 50px;
+  }
+
+  .fixBtn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Tablet (769px ~ 1200px) */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .projects-detail-page {
+    width: 90%;
+  }
+
+  .project-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-summation-section {
+    flex-direction: column;
+  }
+
+  .project-text-section {
+    width: 100%;
+  }
+
+  .project-image-wrapper {
+    height: auto;
+  }
+
+  .project-image {
+    max-width: 80%;
+  }
+
+  .fixBtnWrap {
+    bottom: 40px;
+    right: 30px;
+    margin: 0;
+    width: 55px;
+    height: 55px;
+  }
+
+  .fixBtn {
+    width: 50px;
+    height: 50px;
+  }
+}
