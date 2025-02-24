@@ -12,6 +12,8 @@ import BoardContent from "./routes/board/[id]";
 import BoardLayout from "./Components/Layout/BoardLayout";
 import { AuthProvider } from "./contexts/AuthContext";
 import LenisProvider from "./contexts/LenisProvider";
+import { boardListLoader } from "./Loader";
+import { addPostAction } from "./Action";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,8 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Board />,
+            loader: boardListLoader,
+            action: addPostAction,
           },
           {
             path: ":id",
