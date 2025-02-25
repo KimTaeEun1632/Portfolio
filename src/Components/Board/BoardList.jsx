@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./BoardList.css";
 import getRelativeTime from "../getRelativeTime ";
 import { Link, useLoaderData, useSearchParams } from "react-router-dom";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { db } from "../../firebase";
 
 const BoardList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { contents = [] } = useLoaderData();
+  const { contents: initialContents = [] } = useLoaderData();
+  const [contents, setContents] = useState(initialContents);
 
   const sortValue = searchParams.get("sort") || "createdAt";
 
@@ -24,6 +33,23 @@ const BoardList = () => {
 
     setSearchParams({ sort: sortParam });
   };
+
+  useEffect(() => {
+    const contentsQuery = query(
+      collection(db, "contents"),
+      orderBy(sortValue, "desc"),
+      limit(25)
+    );
+
+    const unsubscribe = onSnapshot(contentsQuery, (snapshot) => {
+      const newContents = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setContents(newContents);
+    });
+    return () => unsubscribe();
+  }, [sortValue]);
 
   return (
     <div className="board-list-wrapper">
