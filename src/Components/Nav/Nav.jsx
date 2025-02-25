@@ -39,8 +39,6 @@ const Nav = () => {
         </div>
 
         <nav className="navButton">
-          <Link to="#aboutSection">About</Link>
-
           <div className="projects-links-box">
             <p onClick={() => setIsOpenProjectList(!isOpenProjectList)}>
               Projects
@@ -71,8 +69,6 @@ const Nav = () => {
           </a>
         </div>
         <nav className="navButton">
-          <Link to="#aboutSection">About</Link>
-
           <div className="projects-links-box">
             <p onClick={() => setIsOpenProjectList(!isOpenProjectList)}>
               Projects
