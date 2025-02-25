@@ -31,7 +31,7 @@ const SubReplySubmit = ({
         createdAt: Date.now(),
         depth: parent ? parent.depth + 1 : 0,
         parentId: parentId,
-        path: parent ? `${parent.path}/${parent.id}` : "",
+        path: parent ? [...parent.path, parentId] : ["root"],
       });
 
       const boardDocRef = doc(db, "contents", boardId);

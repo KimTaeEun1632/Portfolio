@@ -53,7 +53,7 @@ const BoardContent = () => {
         createdAt: Date.now(),
         depth: parent ? parent.depth + 1 : 0,
         parentId: parent ? parent.id : null,
-        path: parent ? `${parent.path}/${parent.id}` : "",
+        path: parent ? [...parent.path, parent.id] : ["root"],
       });
 
       const boardDocRef = doc(db, "contents", boardId);
@@ -307,6 +307,7 @@ const BoardContent = () => {
                                 boardId={boardId}
                                 parentId={r.id}
                                 parent={r}
+                                setOpenReplyId={setOpenReplyId}
                               />
                             )}
                             {/* 🔽 대댓글 컴포넌트 추가 */}
