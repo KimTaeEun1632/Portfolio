@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import React, { useEffect, useMemo, useState } from "react";
 import { auth, db } from "../../../firebase";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./boardContent.css";
 import Star from "../../../Components/Star";
 import BoardEdit from "../../../Components/Board/BoardEdit";
@@ -178,9 +178,9 @@ const BoardContent = () => {
         <div className="board-content-wrapper">
           <div className="board-content-detail-header">
             <div className="board-content-detail-header-top">
-              <a className="board-content-detail-header-link" href="/board">
+              <Link className="board-content-detail-header-link" to="/board">
                 자유게시판
-              </a>
+              </Link>
               <Star star={content.rating} />
               <h2 className="board-content-detail-header-title">
                 {content.title}

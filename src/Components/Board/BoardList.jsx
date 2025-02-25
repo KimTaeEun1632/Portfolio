@@ -1,3 +1,7 @@
+import React, { useEffect, useState } from "react";
+import "./BoardList.css";
+import getRelativeTime from "../getRelativeTime ";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 import {
   collection,
   limit,
@@ -5,69 +9,59 @@ import {
   orderBy,
   query,
 } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 
-import "./BoardList.css";
-
-import getRelativeTime from "../getRelativeTime ";
-
 const BoardList = () => {
-  const [contents, setContents] = useState([]);
-  const [sortValue, setSortValue] = useState("최신순");
   const [isOpen, setIsOpen] = useState(false);
-  console.log(contents);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { contents: initialContents = [] } = useLoaderData();
+  const [contents, setContents] = useState(initialContents);
+
+  const sortValue = searchParams.get("sort") || "createdAt";
 
   const handleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleDropdownClick = (item) => {
-    setSortValue(item);
-    setIsOpen(false);
+  const handleSortChange = (value) => {
+    const sortParam =
+      value === "최신순"
+        ? "createdAt"
+        : value === "별점순"
+        ? "rating"
+        : "replyCount";
+
+    setSearchParams({ sort: sortParam });
   };
+
   useEffect(() => {
-    let unsubscribe = null;
+    const contentsQuery = query(
+      collection(db, "contents"),
+      orderBy(sortValue, "desc"),
+      limit(25)
+    );
 
-    const fetchContents = async (orderField = "createdAt") => {
-      const contentsQuery = query(
-        collection(db, "contents"),
-        orderBy(orderField, "desc"),
-        limit(25)
-      );
-
-      unsubscribe = await onSnapshot(contentsQuery, (snapshot) => {
-        const contents = snapshot.docs.map((doc) => {
-          const { password, ...rest } = doc.data();
-          return {
-            ...rest,
-            id: doc.id,
-          };
-        });
-        setContents(contents);
-      });
-    };
-
-    if (sortValue === "최신순") {
-      fetchContents("createdAt");
-    } else if (sortValue === "별점순") {
-      fetchContents("rating");
-    } else {
-      fetchContents("replyCount");
-    }
-
-    return () => {
-      if (unsubscribe) {
-        unsubscribe();
-      }
-    };
+    const unsubscribe = onSnapshot(contentsQuery, (snapshot) => {
+      const newContents = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setContents(newContents);
+    });
+    return () => unsubscribe();
   }, [sortValue]);
 
   return (
     <div className="board-list-wrapper">
       <div className="board-list-header">
         <div onClick={handleDropdown} className="board-dropdown-wrapper">
-          <button className="board-dropdown">{sortValue}</button>
+          <button className="board-dropdown">
+            {sortValue === "createdAt"
+              ? "최신순"
+              : sortValue === "rating"
+              ? "별점순"
+              : "댓글순"}
+          </button>
           <svg
             fill="none"
             strokeWidth="1.5"
@@ -85,15 +79,9 @@ const BoardList = () => {
 
           {isOpen && (
             <div className="board-dropdown-button">
-              <button onClick={() => handleDropdownClick("최신순")}>
-                최신순
-              </button>
-              <button onClick={() => handleDropdownClick("별점순")}>
-                별점순
-              </button>
-              <button onClick={() => handleDropdownClick("댓글순")}>
-                댓글순
-              </button>
+              <button onClick={() => handleSortChange("최신순")}>최신순</button>
+              <button onClick={() => handleSortChange("별점순")}>별점순</button>
+              <button onClick={() => handleSortChange("댓글순")}>댓글순</button>
             </div>
           )}
         </div>
@@ -102,16 +90,16 @@ const BoardList = () => {
         <section className="board-list-body" key={content.id}>
           <div>
             {content.replyCount > 0 ? (
-              <a className="board-list-link" href={`/board/${content.id}`}>
+              <Link className="board-list-link" to={`/board/${content.id}`}>
                 {content.title}{" "}
                 <span className="board-list-replyCount">
                   [{content.replyCount}]
                 </span>
-              </a>
+              </Link>
             ) : (
-              <a className="board-list-link" href={`/board/${content.id}`}>
+              <Link className="board-list-link" to={`/board/${content.id}`}>
                 {content.title}
-              </a>
+              </Link>
             )}
           </div>
           <div className="board-footer">
