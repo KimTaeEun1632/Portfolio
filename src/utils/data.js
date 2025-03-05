@@ -229,34 +229,31 @@ export const data = {
     },
     {
       id: 5,
-      title: "personal project",
-      subtitle: "개인 프로젝트",
+      title: "AI Nail Art",
+      subtitle: "AI Nail Art",
       projectType: "personal",
-      date: "00.00.00 ~ 00. 00. 00",
-      description: "AI 오픈소스를 이용한 개인 프로젝트 입니다.",
-      technologies: [],
-      imgUrl: "/images/하이재킹.jpg",
+      date: "25. 3. 3 ~ 진행중",
+      description:
+        "AI 오픈소스 Stable Diffusion를 활용한 AI 네일 아트 디자인 생성 프로젝트입니다",
+      technologies: ["Python, Next.js, Tailwind CSS"],
+      imgUrl: "/images/네일메인.png",
       links: {
         github: "https://github.com/Team18-The-Julge/The-Julge",
         website: "https://the-julge-tau.vercel.app/",
       },
-      reasonForTechChoice: ["React", "Node.js", "MongoDB"],
+      reasonForTechChoice: ["Python:", "Next: ", "Tailwind CSS:"],
       slides: [
         {
-          src: "/images/글로벌1.png",
+          src: "/images/네일1.png",
           alt: "글로벌노마드 이미지1",
         },
         {
-          src: "/images/글로벌2.png",
+          src: "/images/네일2.png",
           alt: "글로벌노마드 이미지2",
         },
         {
-          src: "/images/글로벌3.png",
+          src: "/images/네일3.png",
           alt: "글로벌노마드 이미지3",
-        },
-        {
-          src: "/images/글로벌4.png",
-          alt: "글로벌노마드 이미지4",
         },
       ],
       retrospect: [],
