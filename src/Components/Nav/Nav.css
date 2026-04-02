@@ -1,214 +1,143 @@
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+CU&display=swap");
-
-.navBar {
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 4.5rem;
-  max-width: 71.25rem;
-  padding: 1.25rem 2rem;
+  z-index: 1000;
+  background-color: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem 2rem;
+}
+
+.nav-container.scrolled {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 1rem 2rem;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  z-index: 100;
-  background-color: white;
-  transition: opacity 0.3s ease-in-out;
 }
 
-.navBar.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.navButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  font-weight: 200;
-}
-
-.logoText {
-  font-family: "Playwrite CU";
-}
-
-a {
-  color: inherit;
+.logo-text {
+  font-family: "Playwrite CU", cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--on-surface);
   text-decoration: none;
 }
 
-.navBarFixed {
-  width: 100%;
-  height: 3.5rem;
-  padding: 1.25rem 2rem;
+.nav-right {
   display: flex;
-  justify-content: center;
-  gap: 400px;
   align-items: center;
-  color: white;
-  position: fixed;
-  top: 0;
-  background-color: rgb(109, 106, 264);
-  z-index: 100;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  visibility: hidden;
-  opacity: 0;
+  gap: 2.5rem;
 }
 
-.navBarFixed.visible {
-  visibility: visible;
-  opacity: 1;
-}
-
-.navBox {
-  border-bottom: solid 2px rgb(109, 106, 264);
-}
-
-.login-box {
+.nav-item-wrapper {
   position: relative;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+CU&display=swap");
-
-.navBar {
-  width: 100%;
-  height: 4.5rem;
-  max-width: 71.25rem;
-  padding: 1.25rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  z-index: 100;
-  background-color: white;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.navBar.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.navButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  font-weight: 200;
-}
-
-.logoText {
-  font-family: "Playwrite CU";
-}
-
-a {
-  color: inherit;
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--on-surface-variant);
   text-decoration: none;
+  transition: color 0.2s;
 }
 
-.navBarFixed {
-  width: 100%;
-  height: 3.5rem;
-  padding: 1.25rem 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 400px;
-  align-items: center;
-  color: white;
-  position: fixed;
-  top: 0;
-  background-color: rgb(109, 106, 264);
-  z-index: 100;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  visibility: hidden;
-  opacity: 0;
+.nav-link:hover {
+  color: var(--primary);
 }
 
-.navBarFixed.visible {
-  visibility: visible;
-  opacity: 1;
-}
-
-.navBox {
-  border-bottom: solid 2px rgb(109, 106, 264);
-}
-
-.login-box {
-  position: relative;
+.nav-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--on-surface-variant);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s;
+  font-family: inherit;
 }
 
-.login-dropdown {
+.nav-link-btn:hover, .nav-link-btn.active {
+  color: var(--primary);
+}
+
+.arrow-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s;
+}
+
+.arrow-icon.up {
+  transform: rotate(180deg);
+}
+
+.contact-btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(53, 37, 205, 0.1);
+}
+
+.contact-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(53, 37, 205, 0.2);
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+}
+
+.login-dropdown-wrapper {
   position: absolute;
-  top: 165%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
+  top: calc(100% + 1.25rem);
+  right: 0;
+  width: 280px;
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  z-index: 100;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--outline-variant);
+  padding: 1.5rem;
+  animation: slideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  z-index: 1001;
 }
 
-.projects-links-box {
-  position: relative;
-  cursor: pointer;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* 반응형 스타일 */
-
-/* Mobile (최대 768px) */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-  .navBar {
-    height: 3.5rem;
-    padding: 1rem;
-    font-size: 12px;
+  .nav-right {
+    gap: 1.25rem;
   }
-
-  .navButton {
-    gap: 1rem;
-    font-size: 0.875rem;
+  .contact-btn {
+    display: none;
   }
-
-  .navBarFixed {
-    height: 3rem;
-    padding: 1rem;
-    gap: 100px;
-    font-size: 12px;
-  }
-
-  .login-dropdown {
-    width: 120px;
-    padding: 12px;
-    left: 0;
-  }
-}
-
-/* Tablet (769px ~ 1200px) */
-@media (min-width: 769px) and (max-width: 1200px) {
-  .navBar {
-    height: 4rem;
-    padding: 1.25rem;
-    font-size: 14px;
-  }
-
-  .navButton {
-    gap: 1.5rem;
-    font-size: 1rem;
-  }
-
-  .navBarFixed {
-    height: 3.2rem;
-    gap: 200px;
-    font-size: 14px;
-  }
-
-  .login-dropdown {
-    width: 160px;
-    padding: 14px;
-    left: 0;
+  .nav-link, .nav-link-btn {
+    font-size: 0.8125rem;
   }
 }

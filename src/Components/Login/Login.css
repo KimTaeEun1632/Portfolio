@@ -1,86 +1,56 @@
 .nickname-display {
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: black;
+  color: var(--on-surface);
+  line-height: 1.4;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .login-input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--outline-variant);
+  border-radius: 0.75rem;
+  background-color: var(--surface-container-low);
+  font-family: inherit;
+  transition: border-color 0.2s;
 }
 
-.login-button {
+.login-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.login-button, .logout-input {
   width: 100%;
-  padding: 10px;
-  background-color: rgb(109, 106, 264);
+  padding: 0.75rem;
+  background-color: var(--primary);
   color: white;
   border: none;
-  border-radius: 4px;
-  font-weight: bold;
+  border-radius: 0.75rem;
+  font-weight: 700;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
-.login-button:hover {
-  background-color: rgb(84, 81, 203);
+.login-button:hover, .logout-input:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.logout-input {
-  width: 100%;
-  padding: 10px;
-  background-color: rgb(109, 106, 264);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
+.login-button:active, .logout-input:active {
+  transform: translateY(0);
 }
 
-.logout-input:hover {
-  background-color: rgb(84, 81, 203);
-}
-
-/* Mobile (최대 768px) */
-@media (max-width: 768px) {
-  .nickname-display {
-    font-size: 14px;
-  }
-
-  .login-input {
-    padding: 6px;
-    font-size: 14px;
-  }
-
-  .login-button,
-  .logout-input {
-    padding: 8px;
-    font-size: 14px;
-  }
-}
-
-/* Tablet (769px ~ 1200px) */
-@media (min-width: 769px) and (max-width: 1200px) {
-  .nickname-display {
-    font-size: 15px;
-  }
-
-  .login-input {
-    padding: 7px;
-    font-size: 15px;
-  }
-
-  .login-button,
-  .logout-input {
-    padding: 9px;
-    font-size: 15px;
-  }
+.logout-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

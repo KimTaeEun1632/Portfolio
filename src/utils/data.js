@@ -1,59 +1,55 @@
 export const data = {
   about: [
     {
-      title: "Q. 프론트엔드를 지향하는 이유",
-      desc: "서비스를 제공하는 기획 과정에서 항상 소비자, 사용자를 생각해야 합니다. 개발자에 대해 알아가는 과정에서 프론트엔드 개발자는 항상 사용자와 가까운 위치에 있었습니다. 이 과정이 큰 매력으로 느껴 프론트엔드를 지향하게 되었습니다. React, Next, Typescript, Firebase, React-query 등 다양한 프레임워크와 라이브러리를 배우며 새로운 세상에 도전하고 있습니다.",
+      title: "프론트엔드를 지향하는 이유",
+      desc: `"기술로 사용자의 첫인상을 결정짓는 매력에 빠졌습니다."
+서비스를 기획하고 구축할 때 가장 몰입하는 순간은 '사용자가 어떻게 이 기능을 마주할까'를 고민할 때입니다. 프론트엔드는 사용자와 서비스가 만나는 최전선에서 즉각적인 피드백을 주고받는 분야이기에 큰 매력을 느꼈습니다.
+단순히 화면을 구현하는 것에 그치지 않고 React, Next.js, TypeScript 등의 스택을 활용해 더 나은 사용성을 고민하며, 기술적 성장을 통해 사용자 경험을 고도화하는 개발자가 되고 싶습니다.`,
     },
     {
-      title: "Q. 개발자로써 마음가짐",
-      desc: "소통하는 개발자, 그리고 개선할 줄 아는 개발자가 되고자 합니다. 단순히 팀원과의 소통을 넘어, 사용자와의 소통을 통해 더 나은 경험을 제공하는 것이 중요하다고 생각합니다. 사용자의 입장에서 고민하고, 최적화를 통해 더욱 직관적이고 효율적인 서비스를 만들기 위해 노력합니다. 작은 디테일까지 신경 쓰며 지속적으로 개선하고 성장하는 개발자가 되겠습니다.",
+      title: "개발자로써 마음가짐",
+      desc: `"사용자의 목소리를 코드로 번역하는 개발자"
+제가 생각하는 소통은 단순히 대화를 나누는 것을 넘어, 사용자의 불편함을 데이터와 피드백으로 읽어내어 솔루션을 제시하는 것입니다.
+"이 기능이 사용자에게 정말 직관적인가?"라는 질문을 스스로 끊임없이 던집니다. 1초의 로딩 시간을 줄이는 최적화나, 사소해 보일 수 있는 UI의 디테일이 서비스의 완성도를 결정한다고 믿습니다. 작은 피드백도 놓치지 않고 끊임없이 코드를 개선하며, 어제보다 더 나은 인터페이스를 만드는 데 집중합니다.`,
     },
     {
-      title: "Q. 문제를 해결하는 나만의 방식은?",
-      desc: "개발을 하면서 다양하 문제를 해결하기 위해 작은 단위로 나누어 단계별로 분석하고 해결 합니다. 공식문서, 커뮤니티, 검색 등 다양한 방식으로 접근합니다. 그 중 팀원과의 소통이 제일 중요하다고 생각합니다. 해결 후 지속적인 학습을 통해 내 것으로 만들기 위해 노력하고 있습니다.",
+      title: "문제를 해결하는 나만의 방식은?",
+      desc: `"AI의 효율성과 공식 문서의 정확성을 결합해 최적의 답을 찾습니다."
+문제를 마주하면 AI를 활용해 다양한 가설과 해결 가이드라인을 빠르게 도출합니다. 하지만 AI의 답변을 맹신하지 않고, 반드시 공식 문서와 교차 검증하여 우리 프로젝트 환경에 적합한지 확인합니다.
+AI를 통해 해결 시간을 단축하는 만큼, 그 원리를 깊이 파고들어 '왜 이렇게 작동하는지'를 반드시 이해하고 넘어갑니다. 도구를 잘 다루는 것을 넘어, 도구가 내놓은 결과물을 완벽히 제 것으로 만드는 것이 저의 문제 해결 방식입니다.`,
     },
   ],
   project: [
     {
-      id: 1,
-      title: "Portfolio",
-      subtitle: "포트폴리오",
+      id: 5,
+      title: "AI Nail Art",
+      subtitle: "AI Nail Art",
       projectType: "personal",
-      date: "00.00.00 ~ 00. 00. 00",
+      date: "25. 3. 3 ~ 진행중",
       description:
-        "개인 포트폴리오 사이트 제작, React 기본기 연습과 React router v6, Firebase, GSAP 의 사용법을 배우고자 해당 기술 들을 사용하였습니다.",
-      technologies: ["React, GSAP, Firebase"],
-      imgUrl: "/images/포폴1.png",
+        "AI 오픈소스 Stable Diffusion를 활용한 AI 네일 아트 디자인 생성 프로젝트입니다",
+      technologies: ["Python, Next.js, Tailwind CSS"],
+      imgUrl: "/images/네일메인.png",
       links: {
-        github: "https://github.com/KimTaeEun1632/Portfolio",
-        notion:
-          "https://www.notion.so/Portfolio-16b429a3f7728049ae3ccee6701201f2",
+        github: "https://github.com/Team18-The-Julge/The-Julge",
+        website: "https://the-julge-tau.vercel.app/",
       },
-      reasonForTechChoice: [
-        "React : 리액트의 기본기를 더 연습하고자 채택했습니다.",
-        "React router v6: 기존 배원던 v5대신 v6를 연습하고자 채택하였습니다.",
-        "Firebase : 서버를 활용하여 게시판 기능을 만들고자 채택하였습니다.",
-        "GSAP : 인터렉티브한 사이트를 만들기 위해 채택하였습니다.",
-      ],
+      reasonForTechChoice: ["Python:", "Next: ", "Tailwind CSS:"],
       slides: [
         {
-          src: "/images/포트폴리오1.png",
+          src: "/images/네일1.png",
           alt: "글로벌노마드 이미지1",
         },
         {
-          src: "/images/포트폴리오2.png",
+          src: "/images/네일2.png",
           alt: "글로벌노마드 이미지2",
         },
         {
-          src: "/images/포트폴리오3.png",
+          src: "/images/네일3.png",
           alt: "글로벌노마드 이미지3",
         },
       ],
-      retrospect: [
-        "동영상을 넣고 싶어 직접 동영상을 만들면서 편집에 대해서도 배우고, video속성에 대해 공부를 할 수 있었으며 인터렉티브한 사이트를 위해 GSAP에 대해 공부하고 사용해보며 UX/UI 역량을 기를 수 있었습니다.",
-        "React 최신버전을 공부하면서 라우팅에 대해 많이 배울 수 있었습니다. react-router-dom v6버전을 적용하면서 동작원리와 빠르게 변하는 React에 대해 더 공부 할 수 있었습니다. 또한, 캐러샐 라이브러리 없이 캐러샐을 구현하면서 Vanilla.js에도 조금 익숙해 질 수 있었습니다.",
-        "게시판 기능을 구현하기 위해 Firebase를 활용하며 실시간 데이터베이스, 인증, 저장소 등의 기능을 익혔습니다. Firebase의 장점인 백엔드 구축 없이도 빠르게 기능을 개발할 수 있다는 점을 직접 경험하며, NoSQL 데이터 구조와 Firestore의 쿼리 방식에 대해 깊이 이해할 수 있었습니다.",
-      ],
+      retrospect: [],
     },
     {
       id: 2,
@@ -228,35 +224,45 @@ export const data = {
       ],
     },
     {
-      id: 5,
-      title: "AI Nail Art",
-      subtitle: "AI Nail Art",
+      id: 1,
+      title: "Portfolio",
+      subtitle: "포트폴리오",
       projectType: "personal",
-      date: "25. 3. 3 ~ 진행중",
+      date: "00.00.00 ~ 00. 00. 00",
       description:
-        "AI 오픈소스 Stable Diffusion를 활용한 AI 네일 아트 디자인 생성 프로젝트입니다",
-      technologies: ["Python, Next.js, Tailwind CSS"],
-      imgUrl: "/images/네일메인.png",
+        "개인 포트폴리오 사이트 제작, React 기본기 연습과 React router v6, Firebase, GSAP 의 사용법을 배우고자 해당 기술 들을 사용하였습니다.",
+      technologies: ["React, GSAP, Firebase"],
+      imgUrl: "/images/포폴1.png",
       links: {
-        github: "https://github.com/Team18-The-Julge/The-Julge",
-        website: "https://the-julge-tau.vercel.app/",
+        github: "https://github.com/KimTaeEun1632/Portfolio",
+        notion:
+          "https://www.notion.so/Portfolio-16b429a3f7728049ae3ccee6701201f2",
       },
-      reasonForTechChoice: ["Python:", "Next: ", "Tailwind CSS:"],
+      reasonForTechChoice: [
+        "React : 리액트의 기본기를 더 연습하고자 채택했습니다.",
+        "React router v6: 기존 배원던 v5대신 v6를 연습하고자 채택하였습니다.",
+        "Firebase : 서버를 활용하여 게시판 기능을 만들고자 채택하였습니다.",
+        "GSAP : 인터렉티브한 사이트를 만들기 위해 채택하였습니다.",
+      ],
       slides: [
         {
-          src: "/images/네일1.png",
+          src: "/images/포트폴리오1.png",
           alt: "글로벌노마드 이미지1",
         },
         {
-          src: "/images/네일2.png",
+          src: "/images/포트폴리오2.png",
           alt: "글로벌노마드 이미지2",
         },
         {
-          src: "/images/네일3.png",
+          src: "/images/포트폴리오3.png",
           alt: "글로벌노마드 이미지3",
         },
       ],
-      retrospect: [],
+      retrospect: [
+        "동영상을 넣고 싶어 직접 동영상을 만들면서 편집에 대해서도 배우고, video속성에 대해 공부를 할 수 있었으며 인터렉티브한 사이트를 위해 GSAP에 대해 공부하고 사용해보며 UX/UI 역량을 기를 수 있었습니다.",
+        "React 최신버전을 공부하면서 라우팅에 대해 많이 배울 수 있었습니다. react-router-dom v6버전을 적용하면서 동작원리와 빠르게 변하는 React에 대해 더 공부 할 수 있었습니다. 또한, 캐러샐 라이브러리 없이 캐러샐을 구현하면서 Vanilla.js에도 조금 익숙해 질 수 있었습니다.",
+        "게시판 기능을 구현하기 위해 Firebase를 활용하며 실시간 데이터베이스, 인증, 저장소 등의 기능을 익혔습니다. Firebase의 장점인 백엔드 구축 없이도 빠르게 기능을 개발할 수 있다는 점을 직접 경험하며, NoSQL 데이터 구조와 Firestore의 쿼리 방식에 대해 깊이 이해할 수 있었습니다.",
+      ],
     },
   ],
 };

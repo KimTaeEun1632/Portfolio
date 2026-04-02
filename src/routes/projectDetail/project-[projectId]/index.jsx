@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import "./ProjectDetail.css";
-import Badge from "../../../Components/Badge/Badge";
-import Carousel from "../../../Components/Carousel/Carousel";
 
 const ProjectDetail = ({ items }) => {
   const { projectId } = useParams();
-
-  // 스크롤 위치에 따라 버튼 표시 여부를 제어하기 위한 state
+  const navigate = useNavigate();
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
   }, [projectId]);
 
   useEffect(() => {
@@ -27,114 +24,193 @@ const ProjectDetail = ({ items }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const project = items.find((item) => item.id === parseInt(projectId));
+  const projectIndex = items.findIndex((item) => item.id === parseInt(projectId));
+  const project = items[projectIndex];
 
   if (!project) {
-    return <div>프로젝트를 찾을 수 없습니다.</div>;
+    return (
+      <div className="project-detail-page">
+        <div className="max-w-7xl px-8 py-24 text-center">
+          <h2 className="text-3xl font-bold">프로젝트를 찾을 수 없습니다.</h2>
+          <Link to="/" className="text-primary mt-4 inline-block">홈으로 돌아가기</Link>
+        </div>
+      </div>
+    );
   }
 
+  const nextProject = items[(projectIndex + 1) % items.length];
+
   return (
-    <div className="projects-detail-page">
-      <div
-        key={project.id}
-        id={`project-${project.id}`}
-        className="project-detail-section"
-      >
-        <div className="project-summation-section">
-          <div className="project-image-wrapper">
-            <img
-              src={project.imgUrl}
-              alt={project.title}
-              className="project-image"
-            />
-          </div>
-          <div className="project-text-section">
-            <div>
-              <div className="project-titleBox">
-                <h2>{project.title}</h2>
-                <Badge item={project} />
-              </div>
-              <p>{project.subtitle}</p>
-            </div>
-            <div className="project-date">
-              <p>{project.date}</p>
-            </div>
-            <div>
-              <p>{project.description}</p>
+    <div className="project-detail-page">
+      <main>
+        {/* Hero Section */}
+        <section className="hero-section max-w-7xl">
+          <div className="hero-image-container">
+            <img className="hero-image" src={project.imgUrl} alt={project.title} />
+            <div className="hero-overlay"></div>
+            <div className="hero-content">
+              <label className="hero-tag">Project Case Study</label>
+              <h1 className="hero-title">{project.title}</h1>
+              <p className="hero-subtitle">{project.subtitle}</p>
             </div>
           </div>
-        </div>
-        <div>
-          <ul className="project-links">
-            <li>
-              <a
-                href={project.links.github}
-                className="project-link"
-                target="_blank"
-                rel="noreferrer"
+          <div className="hero-actions">
+            {project.links.website && (
+              <a 
+                href={project.links.website} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="btn-primary"
               >
-                GitHub
+                Live Demo <span className="material-symbols-outlined">arrow_outward</span>
               </a>
-            </li>
-            <li>
-              <a
-                href={project.links.website}
-                className="project-link"
-                target="_blank"
-                rel="noreferrer"
+            )}
+            {project.links.github && (
+              <a 
+                href={project.links.github} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="btn-outline"
               >
-                Demo
+                View Source
               </a>
-            </li>
-            <li>
-              <a
-                href={project.links.notion}
-                className="project-link"
-                target="_blank"
-                rel="noreferrer"
+            )}
+            {project.links.notion && (
+              <a 
+                href={project.links.notion} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="btn-outline"
               >
                 Notion
               </a>
-            </li>
-          </ul>
-          <div className="reasonTC-Wrap">
-            <h1 className="reasonTC-title">사용 기술</h1>
-            <ul className="reasonForTechChoice">
-              {project.reasonForTechChoice.map((techChoice, id) => {
-                // 콜론(:) 앞과 뒤를 나누기 위해 split 사용
-                const [boldText, normalText] = techChoice.split(":");
-                return (
-                  <li key={id}>
-                    <strong>{boldText}:</strong> {normalText}
-                  </li>
-                );
-              })}
-            </ul>
+            )}
           </div>
-          <div className="sliderWrapper">
-            <h1 className="Carousel-title">이미지</h1>
-            <Carousel item={project} />
-          </div>
-          <div>
-            <h1 className="Carousel-title">회고</h1>
-            <div className="retrospect-Wrapper">
-              {project.retrospect.map((review, index) => (
-                <p key={index}>{review}</p>
-              ))}
+        </section>
+
+        {/* Project Overview */}
+        <section className="overview-section">
+          <div className="max-w-7xl overview-grid">
+            <div className="overview-main">
+              <label className="section-label">The Brief</label>
+              <h2 className="overview-title">Architecting a minimalist narrative through code.</h2>
+              <div className="overview-text">
+                <p>{project.description}</p>
+                {project.retrospect && project.retrospect.map((text, i) => (
+                  <p key={i}>{text}</p>
+                ))}
+              </div>
+            </div>
+            <div className="overview-sidebar">
+              <div className="meta-grid">
+                <div className="meta-card">
+                  <span className="material-symbols-outlined meta-icon">person</span>
+                  <p className="meta-label">Role</p>
+                  <p className="meta-value">{project.projectType === "personal" ? "Lead Architect & Designer" : "Frontend Developer"}</p>
+                </div>
+                <div className="meta-card">
+                  <span className="material-symbols-outlined meta-icon">schedule</span>
+                  <p className="meta-label">Timeline</p>
+                  <p className="meta-value">{project.date}</p>
+                </div>
+                <div className="meta-card full-width">
+                  <span className="material-symbols-outlined meta-icon">terminal</span>
+                  <p className="meta-label">Tech Stack</p>
+                  <div className="tech-tag-container">
+                    {project.technologies[0].split(",").map((tech, i) => (
+                      <span key={i} className="tech-tag">{tech.trim()}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
+
+        {/* Engineering Excellence (Tech Choices) */}
+        <section className="engineering-section max-w-7xl">
+          <h2 className="engineering-title">Engineering Excellence</h2>
+          <div className="features-grid">
+            {project.reasonForTechChoice.slice(0, 3).map((techChoice, i) => {
+              const [title, desc] = techChoice.split(":");
+              const icons = ["palette", "layers", "search_check"];
+              return (
+                <div key={i} className="feature-card">
+                  <div className="feature-icon-wrapper">
+                    <span className="material-symbols-outlined feature-icon">{icons[i % icons.length]}</span>
+                  </div>
+                  <h3 className="feature-title">{title.trim()}</h3>
+                  <p className="feature-desc">{desc.trim()}</p>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Visual Showcase (Slides) */}
+        {project.slides && project.slides.length > 0 && (
+          <section className="showcase-section">
+            <div className="max-w-7xl">
+              <div className="showcase-grid">
+                <div className="showcase-col">
+                  {project.slides.slice(0, 2).map((slide, i) => (
+                    <img 
+                      key={i} 
+                      className={`showcase-image ${i === 0 ? 'h-500' : 'h-400'}`} 
+                      src={slide.src} 
+                      alt={slide.alt} 
+                    />
+                  ))}
+                </div>
+                <div className="showcase-col offset">
+                  {project.slides.length > 2 && (
+                    <img 
+                      className="showcase-image h-600" 
+                      src={project.slides[2].src} 
+                      alt={project.slides[2].alt} 
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Next Project Navigation */}
+        <section className="next-project-section max-w-7xl">
+          <div className="next-project-container">
+            <div className="next-project-info">
+              <label className="meta-label">Up Next</label>
+              <h4 
+                className="next-project-title"
+                onClick={() => navigate(`/projectDetail/${nextProject.id}#${nextProject.subtitle}`)}
+              >
+                {nextProject.title}
+              </h4>
+            </div>
+            <Link 
+              to={`/projectDetail/${nextProject.id}#${nextProject.subtitle}`} 
+              className="next-project-link"
+            >
+              View Next Project <span className="material-symbols-outlined lg">arrow_forward</span>
+            </Link>
+          </div>
+        </section>
+      </main>
+
       {/* showScrollToTop이 true일 때만 버튼 표시 */}
       {showScrollToTop && (
         <div className="fixBtnWrap">
-          <a href="#topNav">
+          <button 
+            className="fixBtn" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <img
-              className="fixBtn"
               src="/images/위쪽화살표.png"
               alt="위쪽 화살표"
-            ></img>
-          </a>
+              style={{ width: '100%', height: '100%' }}
+            />
+          </button>
         </div>
       )}
     </div>
