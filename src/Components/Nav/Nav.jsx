@@ -9,7 +9,7 @@ const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpenLogin, setIsOpenLogin] = useState(false);
   const [isOpenProjectList, setIsOpenProjectList] = useState(false);
-  
+
   const projectDropdownRef = useRef(null);
   const loginDropdownRef = useRef(null);
   const { isLoggedIn } = useAuth();
@@ -27,10 +27,16 @@ const Nav = () => {
   // Click outside handler
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (projectDropdownRef.current && !projectDropdownRef.current.contains(event.target)) {
+      if (
+        projectDropdownRef.current &&
+        !projectDropdownRef.current.contains(event.target)
+      ) {
         setIsOpenProjectList(false);
       }
-      if (loginDropdownRef.current && !loginDropdownRef.current.contains(event.target)) {
+      if (
+        loginDropdownRef.current &&
+        !loginDropdownRef.current.contains(event.target)
+      ) {
         setIsOpenLogin(false);
       }
     };
@@ -45,7 +51,10 @@ const Nav = () => {
   }, [location]);
 
   return (
-    <header className={`nav-container ${isScrolled ? "scrolled" : ""}`} id="topNav">
+    <header
+      className={`nav-container ${isScrolled ? "scrolled" : ""}`}
+      id="topNav"
+    >
       <div className="nav-content max-w-7xl">
         <div className="nav-left">
           <Link to="/" className="logo-text">
@@ -55,7 +64,7 @@ const Nav = () => {
 
         <nav className="nav-right">
           <div className="nav-item-wrapper" ref={projectDropdownRef}>
-            <button 
+            <button
               className={`nav-link-btn ${isOpenProjectList ? "active" : ""}`}
               onClick={() => setIsOpenProjectList(!isOpenProjectList)}
             >
@@ -69,7 +78,7 @@ const Nav = () => {
           </Link>
 
           <div className="nav-item-wrapper" ref={loginDropdownRef}>
-            <button 
+            <button
               className={`nav-link-btn ${isOpenLogin ? "active" : ""}`}
               onClick={() => setIsOpenLogin(!isOpenLogin)}
             >
@@ -81,10 +90,6 @@ const Nav = () => {
               </div>
             )}
           </div>
-          
-          <button className="contact-btn">
-            Contact
-          </button>
         </nav>
       </div>
     </header>

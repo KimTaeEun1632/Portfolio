@@ -11,8 +11,8 @@ const ProjectListDropdown = () => {
       {projects.map((project) => {
         return (
           <div key={project.id} className="project-link-container">
-            <Link to={`/projectDetail/${project.id}#${project.subtitle}`}>
-              <p>{project.subtitle}</p>
+            <Link to={`/projectDetail/${project.id}#${project.title}`}>
+              <p>{project.title}</p>
             </Link>
           </div>
         );
