@@ -20,7 +20,7 @@ const AboutContent = ({ data }) => {
   return (
     <div id="about" ref={refContainer} className="aboutContent-wrapper">
       <div className="aboutContent-top">
-        <img className="about-img" src="/images/내사진.png" alt="김태은사진" />
+        <img className="about-img" src="/images/내사진.png" alt="김태은사진" loading="lazy" />
       </div>
       <div className="aboutContent-foot">
         <div ref={refCard} className="aboutContent-foot-title">

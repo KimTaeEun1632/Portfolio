@@ -16,7 +16,7 @@ const Carousel = ({ item }) => {
   return (
     <div className="carousel">
       <div className="arrow arrow-left" onClick={prevSlide}>
-        <img src="/images/leftArrowVariant1Icon.svg" alt="왼쪽화살표" />
+        <img src="/images/leftArrowVariant1Icon.svg" alt="왼쪽화살표" loading="lazy" />
       </div>
       {data.map((item, idx) => {
         return (
@@ -25,11 +25,12 @@ const Carousel = ({ item }) => {
             alt={item.alt}
             key={idx}
             className={slide === idx ? "slide" : "slide-hidden"}
+            loading="lazy"
           />
         );
       })}
       <div className="arrow arrow-right" onClick={nextSlide}>
-        <img src="/images/rightArrowVariant1Icon.svg" alt="오른쪽쪽화살표" />
+        <img src="/images/rightArrowVariant1Icon.svg" alt="오른쪽쪽화살표" loading="lazy" />
       </div>
       <span className="indicators">
         {data.map((_, idx) => {

@@ -35,12 +35,14 @@ const Banner = () => {
                 src="./images/pause.png"
                 className="playButton"
                 alt="일시정지 아이콘"
+                loading="lazy"
               ></img>
             ) : (
               <img
                 src="./images/play-button.png"
                 className="playButton"
                 alt="플레이아이콘"
+                loading="lazy"
               ></img>
             )}
           </button>

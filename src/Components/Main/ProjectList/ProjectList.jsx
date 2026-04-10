@@ -43,7 +43,7 @@ function ProjectList({ items }) {
               className={`project-card ${slots[index]}`}
               style={{ textDecoration: "none" }}
             >
-              <img src={item.imgUrl} alt={item.title} />
+              <img src={item.imgUrl} alt={item.title} loading="lazy" />
               <div className="project-card-overlay">
                 <div className="project-card-tags">
                   {item.technologies[0]
