@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef } from "react";
 import "./BoardSection.css";
 import BoardSectionContent from "./BoardSectionContent";
 import Animation from "../../../utils/animation";
+import { Link } from "react-router-dom";
 
 const BoardSection = () => {
   const refContainer = useRef(null);
@@ -10,7 +11,7 @@ const BoardSection = () => {
     () => ({
       container: refContainer,
     }),
-    []
+    [],
   );
 
   useEffect(() => {
@@ -27,9 +28,9 @@ const BoardSection = () => {
               무한히 성장하는 여러분들의 <br />
               이야기를 남겨주세요
             </p>
-            <a className="m-board-section-link" href="/board">
+            <Link className="m-board-section-link" to="/board">
               게시판 바로가기
-            </a>
+            </Link>
           </div>
           <div refs={refContainer} className="m-board-section-content-box">
             <BoardSectionContent />

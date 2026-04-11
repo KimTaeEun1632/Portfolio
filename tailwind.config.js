@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -54,6 +51,7 @@ export default {
         "on-primary": "#ffffff",
         "inverse-on-surface": "#eff1f3",
         "on-primary-fixed-variant": "#3323cc",
+        "button-color": "#6d6aff",
       },
       fontFamily: {
         headline: ["Manrope", "sans-serif"],
@@ -70,4 +68,4 @@ export default {
     },
   },
   plugins: [],
-}
+};

@@ -23,24 +23,26 @@ const Board = () => {
   }
 
   return (
-    <div className="board-page">
-      <div className="board-wrapper">
-        <div className="board-title-wrapper">
-          <h1 className="board-title">자유게시판</h1>
-          <button className="board-write-button" onClick={handleOpenModal}>
-            글쓰기
-          </button>
-        </div>
-        <div>
-          <BoardList />
-        </div>
-      </div>
+    <>
       {isOpenModal && (
         <div className="modal-background">
           <BoardModal setIsOpenModal={setIsOpenModal} />
         </div>
       )}
-    </div>
+      <div className="board-page">
+        <div className="board-wrapper">
+          <div className="board-title-wrapper">
+            <h1 className="board-title">자유게시판</h1>
+            <button className="board-write-button" onClick={handleOpenModal}>
+              글쓰기
+            </button>
+          </div>
+          <div>
+            <BoardList />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

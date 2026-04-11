@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./BoardReplyEdit.css";
 import { deleteDoc, doc, runTransaction } from "firebase/firestore";
 import { db } from "../../firebase";
 
 const BoardReplyEdit = ({ onEdit, boardId, replyId }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const handleDeleteReply = async () => {
     if (!window.confirm("정말 이 댓글을 삭제하시겠습니까?")) return;
@@ -41,7 +58,7 @@ const BoardReplyEdit = ({ onEdit, boardId, replyId }) => {
   };
 
   return (
-    <div className="reply-edit-dropdown">
+    <div className="reply-edit-dropdown" ref={dropdownRef}>
       <button
         className="reply-edit-button"
         onClick={() => setDropdownOpen(!dropdownOpen)}

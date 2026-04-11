@@ -43,7 +43,7 @@ const BoardContent = () => {
         db,
         "contents",
         boardId,
-        "replies"
+        "replies",
       );
 
       await addDoc(repliesCollectionRef, {
@@ -125,8 +125,8 @@ const BoardContent = () => {
 
       setReplies((prevReplies) =>
         prevReplies.map((r) =>
-          r.id === replyId ? { ...r, reply: editedReply } : r
-        )
+          r.id === replyId ? { ...r, reply: editedReply } : r,
+        ),
       );
       setEditingReplyId(null);
       alert("댓글이 수정되었습니다.");
@@ -213,7 +213,9 @@ const BoardContent = () => {
           </div>
           {isEditing && (
             <div className="edit-buttons">
-              <button onClick={handleEdit}>수정 완료</button>
+              <button onClick={handleEdit} disabled={!editedContent.trim()}>
+                수정 완료
+              </button>
               <button onClick={() => setIsEditing(false)}>취소</button>
             </div>
           )}
@@ -234,7 +236,11 @@ const BoardContent = () => {
                   />
                 </div>
                 <div className="board-content-reply-button-wrapper">
-                  <button className="board-content-reply-button" type="submit">
+                  <button
+                    className="board-content-reply-button"
+                    type="submit"
+                    disabled={!reply}
+                  >
                     등록
                   </button>
                 </div>
@@ -276,7 +282,10 @@ const BoardContent = () => {
                               className="edit-reply-input"
                             />
                             <div className="edit-reply-buttons">
-                              <button onClick={() => handleEditReply(r.id)}>
+                              <button
+                                onClick={() => handleEditReply(r.id)}
+                                disabled={!editedReply}
+                              >
                                 수정 완료
                               </button>
                               <button onClick={() => setEditingReplyId(null)}>
@@ -294,7 +303,7 @@ const BoardContent = () => {
                                 className="subReply-button"
                                 onClick={() =>
                                   setOpenReplyId(
-                                    openReplyId === r.id ? null : r.id
+                                    openReplyId === r.id ? null : r.id,
                                   )
                                 }
                               >
@@ -323,7 +332,9 @@ const BoardContent = () => {
                       </div>
                     ))
                 ) : (
-                  <p>댓글이 없습니다.</p>
+                  <div className="flex items-center w-full justify-center">
+                    <p>댓글이 없습니다.</p>
+                  </div>
                 )}
               </div>
             </div>
@@ -335,5 +346,4 @@ const BoardContent = () => {
     </div>
   );
 };
-
 export default BoardContent;

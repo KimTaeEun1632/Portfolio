@@ -1,11 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./BoardEdit.css";
 import { deleteDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 const BoardEdit = ({ docRef, onEdit }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   const handleDelete = async () => {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
@@ -26,7 +43,7 @@ const BoardEdit = ({ docRef, onEdit }) => {
   };
 
   return (
-    <div className="content-edit-dropdown">
+    <div className="content-edit-dropdown" ref={dropdownRef}>
       <button
         className="content-edit-button"
         onClick={() => setDropdownOpen(!dropdownOpen)}

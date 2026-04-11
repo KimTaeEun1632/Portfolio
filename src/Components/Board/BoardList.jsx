@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { collection, limit, onSnapshot, orderBy, query, startAfter } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -10,6 +10,7 @@ const PAGE_SIZE = 10;
 
 const BoardList = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [contents, setContents] = useState([]);
   const [pageStack, setPageStack] = useState([]);
@@ -17,9 +18,26 @@ const BoardList = () => {
   const [hasNext, setHasNext] = useState(false);
   const sortValue = searchParams.get("sort") || "createdAt";
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
   const handleSortChange = (val) => {
     setSearchParams({ sort: val });
     setPageStack([]);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -39,8 +57,10 @@ const BoardList = () => {
   return (
     <div className="board-list-wrapper">
       <div className="board-list-header">
-        <div onClick={() => setIsOpen(!isOpen)} className="board-dropdown-wrapper">
-          <button className="board-dropdown">{sortValue === "createdAt" ? "최신순" : sortValue === "rating" ? "별점순" : "댓글순"}</button>
+        <div ref={dropdownRef} className="board-dropdown-wrapper">
+          <button onClick={() => setIsOpen(!isOpen)} className="board-dropdown">
+            {sortValue === "createdAt" ? "최신순" : sortValue === "rating" ? "별점순" : "댓글순"}
+          </button>
           {isOpen && <div className="board-dropdown-button">
             <button onClick={() => handleSortChange("createdAt")}>최신순</button>
             <button onClick={() => handleSortChange("rating")}>별점순</button>

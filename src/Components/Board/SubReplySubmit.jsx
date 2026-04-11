@@ -21,7 +21,7 @@ const SubReplySubmit = ({
         db,
         "contents",
         boardId,
-        "replies"
+        "replies",
       );
 
       await addDoc(repliesCollectionRef, {
@@ -65,7 +65,13 @@ const SubReplySubmit = ({
           onChange={(e) => setSubReply(e.target.value)}
           maxLength={500}
         />
-        <button type="submit">등록</button>
+        <button
+          className="bg-button-color px-3 text-white text-s"
+          type="submit"
+          disabled={!subReply}
+        >
+          등록
+        </button>
       </form>
     </div>
   );
