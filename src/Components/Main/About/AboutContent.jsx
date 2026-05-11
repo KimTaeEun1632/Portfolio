@@ -15,7 +15,8 @@ const AboutContent = ({ data }) => {
   );
 
   useEffect(() => {
-    Animation.section1(refs);
+    const ctx = Animation.section1(refs);
+    return () => ctx.revert();
   }, [refs]);
   return (
     <div id="about" ref={refContainer} className="aboutContent-wrapper">

@@ -13,9 +13,11 @@ const About = ({ data }) => {
   );
 
   useEffect(() => {
+    let ctx;
     if (Animation.section1) {
-      Animation.section1(refs);
+      ctx = Animation.section1(refs);
     }
+    return () => ctx && ctx.revert();
   }, [refs]);
 
   return (

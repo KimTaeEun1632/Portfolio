@@ -15,11 +15,12 @@ const BoardSection = () => {
   );
 
   useEffect(() => {
-    Animation.section3(refs);
+    const ctx = Animation.section3(refs);
+    return () => ctx.revert();
   }, [refs]);
 
   return (
-    <div id="board" refs={refContainer} className="m-board-section">
+    <div id="board" ref={refContainer} className="m-board-section">
       <div className="m-board-section-content">
         <div className="m-board-section-wrapper">
           <div className="m-board-section-top">
@@ -32,7 +33,7 @@ const BoardSection = () => {
               게시판 바로가기
             </Link>
           </div>
-          <div refs={refContainer} className="m-board-section-content-box">
+          <div className="m-board-section-content-box">
             <BoardSectionContent />
           </div>
         </div>

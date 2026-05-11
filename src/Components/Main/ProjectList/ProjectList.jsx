@@ -14,7 +14,8 @@ function ProjectList({ items }) {
   );
 
   useEffect(() => {
-    Animation.section2(refs);
+    const ctx = Animation.section2(refs);
+    return () => ctx.revert();
   }, [refs]);
 
   const slots = [
